@@ -1,29 +1,67 @@
 import markdown
+from markdown.extensions.toc import TocExtension
 import re
 
-with open('/Users/a8833/Documents/GitHub/BKBTCWhitePaper/whitepaper.md', 'r', encoding='utf-8') as f:
+def slugify(value, separator):
+    # This slugify function should handle Unicode characters correctly.
+    value = re.sub(r'[^\w\s-]', '', value, flags=re.UNICODE).strip().lower()
+    return re.sub(r'[-\s]+', separator, value, flags=re.UNICODE)
+
+html_template = '''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BKBTC White Paper</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            display: flex;
+        }
+        #sidebar {
+            width: 250px;
+            background: #f4f4f4;
+            padding: 20px;
+            height: 100vh;
+            position: fixed;
+            overflow-y: auto;
+        }
+        #main-content {
+            margin-left: 270px;
+            padding: 20px;
+        }
+        #sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        #sidebar ul li a {
+            text-decoration: none;
+            color: #333;
+            display: block;
+            padding: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="sidebar">
+        <h2>Table of Contents</h2>
+        TOC_PLACEHOLDER
+    </div>
+    <div id="main-content">
+        CONTENT_PLACEHOLDER
+    </div>
+</body>
+</html>'''
+
+with open('whitepaper.md', 'r', encoding='utf-8') as f:
     md_content = f.read()
 
-md = markdown.Markdown(extensions=['tables', 'toc'])
+md = markdown.Markdown(extensions=['tables', TocExtension(slugify=slugify, permalink=True)])
 html_content = md.convert(md_content)
 toc = md.toc
 
-with open('/Users/a8833/Documents/GitHub/BKBTCWhitePaper/index.html', 'r', encoding='utf-8') as f:
-    index_html = f.read()
+final_html = html_template.replace('TOC_PLACEHOLDER', toc).replace('CONTENT_PLACEHOLDER', html_content)
 
-# Inject TOC
-index_html = index_html.replace('<ul id="toc"></ul>', toc)
-
-# Inject content
-start_str = '<div id="main-content">'
-end_str = '</div>'
-start_pos = index_html.find(start_str)
-end_pos = index_html.rfind(end_str, 0, index_html.find('</body>'))
-
-if start_pos != -1 and end_pos != -1 and start_pos < end_pos:
-    part1 = index_html[:start_pos + len(start_str)]
-    part2 = index_html[end_pos:]
-    index_html = part1 + '\n' + html_content + '\n' + part2
-
-with open('/Users/a8833/Documents/GitHub/BKBTCWhitePaper/index.html', 'w', encoding='utf-8') as f:
-    f.write(index_html)
+with open('index.html', 'w', encoding='utf-8') as f:
+    f.write(final_html)
