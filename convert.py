@@ -57,7 +57,7 @@ html_template = '''<!DOCTYPE html>
 with open('whitepaper.md', 'r', encoding='utf-8') as f:
     md_content = f.read()
 
-md = markdown.Markdown(extensions=['tables', TocExtension(slugify=slugify, permalink=True)])
+md = markdown.Markdown(extensions=['tables', TocExtension(slugify=slugify, permalink=False)])
 html_content = md.convert(md_content)
 toc = md.toc
 
