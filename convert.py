@@ -68,7 +68,10 @@ html_template = '''<!DOCTYPE html>
                 transform: translateX(0);
             }
             #main-content {
-                margin-left: 20px;
+                margin-left: 0;
+                padding: 15px;
+                width: 100%;
+                box-sizing: border-box;
             }
             #menu-button {
                 display: block;
