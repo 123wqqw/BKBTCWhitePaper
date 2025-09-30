@@ -157,6 +157,11 @@ html_template = '''<!DOCTYPE html>
         // Add click event listener to sidebar links for immediate feedback
         links.forEach(link => {
             link.addEventListener('click', function(event) {
+                // On mobile, close the sidebar after clicking a link
+                if (window.innerWidth <= 768) {
+                    sidebar.classList.remove('open');
+                }
+
                 // Use a short timeout to allow the scroll to happen before updating
                 setTimeout(() => {
                     // Force an update after a click
