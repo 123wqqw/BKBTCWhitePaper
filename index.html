@@ -32,6 +32,10 @@
             display: block;
             padding: 5px 0;
         }
+        #sidebar ul li a.active {
+            background-color: #ddd;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -337,5 +341,86 @@
 <li><a href="#">推特</a></li>
 </ul>
     </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const links = document.querySelectorAll('#sidebar .toc a');
+        const sections = new Map();
+
+        // Create a map of sections to their corresponding links
+        links.forEach(link => {
+            const href = link.getAttribute('href');
+            if (href && href.startsWith('#')) {
+                try {
+                    // Use decodeURIComponent to handle encoded characters in hrefs
+                    const sectionId = decodeURIComponent(href.substring(1));
+                    const section = document.getElementById(sectionId);
+                    if (section) {
+                        sections.set(section, link);
+                    }
+                } catch (e) {
+                    console.error('Could not decode URI Component or find section for href: ', href, e);
+                }
+            }
+        });
+
+        const sectionEntries = Array.from(sections.entries());
+
+        function updateActiveLink() {
+            let activeSection = null;
+
+            // Find the last section that is at or above the top of the viewport
+            for (const [section, link] of sectionEntries) {
+                const rect = section.getBoundingClientRect();
+                if (rect.top <= 1) { // 1px offset for precision
+                    activeSection = section;
+                } else {
+                    // Since sections are ordered, we can break early
+                    break;
+                }
+            }
+            
+            // Special case for being at the very bottom of the page
+            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+                const lastEntry = sectionEntries[sectionEntries.length - 1];
+                if (lastEntry) {
+                    activeSection = lastEntry[0];
+                }
+            }
+
+            // Remove 'active' class from all links
+            links.forEach(link => {
+                link.classList.remove('active');
+            });
+
+            // Add 'active' class to the link corresponding to the active section
+            if (activeSection) {
+                const activeLink = sections.get(activeSection);
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                }
+            } else if (links.length > 0) {
+                // If no section is active (e.g., at the very top), activate the first one
+                links[0].classList.add('active');
+            }
+        }
+
+        // Add scroll event listener
+        window.addEventListener('scroll', updateActiveLink);
+
+        // Add click event listener to sidebar links for immediate feedback
+        links.forEach(link => {
+            link.addEventListener('click', function(event) {
+                // Use a short timeout to allow the scroll to happen before updating
+                setTimeout(() => {
+                    // Force an update after a click
+                    updateActiveLink();
+                }, 50);
+            });
+        });
+
+        // Initial check on page load
+        updateActiveLink();
+    });
+    </script>
 </body>
 </html>
