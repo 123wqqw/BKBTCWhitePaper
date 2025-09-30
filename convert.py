@@ -26,10 +26,12 @@ html_template = '''<!DOCTYPE html>
             height: 100vh;
             position: fixed;
             overflow-y: auto;
+            transition: transform 0.3s ease;
         }
         #main-content {
             margin-left: 270px;
             padding: 20px;
+            transition: margin-left 0.3s ease;
         }
         #sidebar ul {
             list-style-type: none;
@@ -45,11 +47,39 @@ html_template = '''<!DOCTYPE html>
             background-color: #ddd;
             font-weight: bold;
         }
+        #menu-button {
+            display: none;
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1000;
+            background: #333;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        @media (max-width: 768px) {
+            #sidebar {
+                transform: translateX(-100%);
+            }
+            #sidebar.open {
+                transform: translateX(0);
+            }
+            #main-content {
+                margin-left: 20px;
+            }
+            #menu-button {
+                display: block;
+            }
+        }
     </style>
 </head>
 <body>
+    <button id="menu-button">☰</button>
     <div id="sidebar">
-        <h2>Table of Contents</h2>
+        <h2>目录</h2>
         TOC_PLACEHOLDER
     </div>
     <div id="main-content">
@@ -134,6 +164,13 @@ html_template = '''<!DOCTYPE html>
 
         // Initial check on page load
         updateActiveLink();
+
+        const menuButton = document.getElementById('menu-button');
+        const sidebar = document.getElementById('sidebar');
+
+        menuButton.addEventListener('click', () => {
+            sidebar.classList.toggle('open');
+        });
     });
     </script>
 </body>
