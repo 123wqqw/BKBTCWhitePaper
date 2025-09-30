@@ -32,6 +32,10 @@
             display: block;
             padding: 5px 0;
         }
+        #sidebar ul li a.active {
+            background-color: #ddd;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -337,5 +341,80 @@
 <li><a href="#">推特</a></li>
 </ul>
     </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const links = document.querySelectorAll("#sidebar a");
+            const sections = Array.from(document.querySelectorAll("#main-content h1, #main-content h2, #main-content h3, #main-content h4, #main-content h5, #main-content h6"));
+
+            // Create a map for quick lookup of link based on section ID
+            const sectionLinkMap = {};
+            links.forEach(link => {
+                try {
+                    const decodedHref = decodeURIComponent(link.getAttribute('href'));
+                    const selector = decodedHref.startsWith('#') ? decodedHref.substring(1) : decodedHref;
+                    // The ID in the document might have special characters escaped differently
+                    // We will associate the link with the section ID directly
+                    const section = document.getElementById(selector);
+                    if (section) {
+                        sectionLinkMap[section.id] = link;
+                    }
+                } catch (e) {
+                    console.error('Error decoding URI component: ', link.getAttribute('href'), e);
+                }
+            });
+
+            function changeLinkState() {
+                let currentSectionId = null;
+
+                for (const section of sections) {
+                    const rect = section.getBoundingClientRect();
+                    // Check if the section is at the top of the viewport
+                    if (rect.top <= 50 && rect.bottom > 50) {
+                        currentSectionId = section.id;
+                        break;
+                    }
+                }
+                
+                // If no section is at the top, find the one closest to the top
+                if (!currentSectionId) {
+                    let closestSection = null;
+                    let minDistance = Infinity;
+
+                    for (const section of sections) {
+                        const rect = section.getBoundingClientRect();
+                        if (rect.top > 50 && rect.top < minDistance) {
+                            minDistance = rect.top;
+                            closestSection = section;
+                        }
+                    }
+                    if(closestSection) {
+                        currentSectionId = closestSection.id;
+                    }
+                }
+
+                links.forEach(link => link.classList.remove("active"));
+                if (currentSectionId && sectionLinkMap[currentSectionId]) {
+                    sectionLinkMap[currentSectionId].classList.add("active");
+                }
+            }
+
+            // Initial check
+            changeLinkState();
+
+            // Re-check on scroll
+            window.addEventListener("scroll", changeLinkState);
+
+            // Handle clicks
+            links.forEach(link => {
+                link.addEventListener("click", function(e) {
+                    setTimeout(() => {
+                         // When a link is clicked, the scroll event will handle the highlighting
+                         // We can also force it here for immediate feedback
+                         changeLinkState();
+                    }, 50); // A small delay to allow the scroll to settle
+                });
+            });
+        });
+    </script>
 </body>
 </html>
