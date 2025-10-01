@@ -1,25 +1,25 @@
 import markdown
 from markdown.extensions.toc import TocExtension
 import re
+import os
 
 def slugify(value, separator):
-    # This slugify function should handle Unicode characters correctly.
     value = re.sub(r'[^\w\s-]', '', value, flags=re.UNICODE).strip().lower()
     return re.sub(r'[-\s]+', separator, value, flags=re.UNICODE)
 
 html_template = '''<!DOCTYPE html>
-<html lang="en">
+<html lang="{lang}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BKBTC White Paper</title>
+    <title>{title}</title>
     <style>
-        body {
+        body {{
             font-family: sans-serif;
             margin: 0;
             display: flex;
-        }
-        #sidebar {
+        }}
+        #sidebar {{
             width: 250px;
             background: #f4f4f4;
             padding: 20px;
@@ -27,27 +27,28 @@ html_template = '''<!DOCTYPE html>
             position: fixed;
             overflow-y: auto;
             transition: transform 0.3s ease;
-        }
-        #main-content {
+            z-index: 999;
+        }}
+        #main-content {{
             margin-left: 270px;
             padding: 20px;
             transition: margin-left 0.3s ease;
-        }
-        #sidebar ul {
+        }}
+        #sidebar ul {{
             list-style-type: none;
             padding: 0;
-        }
-        #sidebar ul li a {
+        }}
+        #sidebar ul li a {{
             text-decoration: none;
             color: #333;
             display: block;
             padding: 5px 0;
-        }
-        #sidebar ul li a.active {
+        }}
+        #sidebar ul li a.active {{
             background-color: #ddd;
             font-weight: bold;
-        }
-        #menu-button {
+        }}
+        #menu-button {{
             display: none;
             position: fixed;
             top: 15px;
@@ -59,139 +60,232 @@ html_template = '''<!DOCTYPE html>
             padding: 10px 15px;
             cursor: pointer;
             border-radius: 5px;
-        }
-        @media (max-width: 768px) {
-            #sidebar {
+        }}
+        #lang-switcher {{
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            z-index: 1000;
+        }}
+        .dropdown {{
+            position: relative;
+            display: inline-block;
+        }}
+        .dropbtn {{
+            background-color: #333;
+            color: white;
+            padding: 10px 15px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }}
+        .dropdown-content {{
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 5px;
+            overflow: hidden;
+        }}
+        .dropdown-content a {{
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }}
+        .dropdown-content a:hover {{background-color: #f1f1f1}}
+        .dropdown:hover .dropdown-content {{
+            display: block;
+        }}
+        .arrow {{
+            display: inline-block;
+            margin-left: 5px;
+            transition: transform 0.2s;
+        }}
+        .dropdown:hover .arrow {{
+            transform: rotate(180deg);
+        }}
+        @media (max-width: 768px) {{
+            #sidebar {{
                 transform: translateX(-100%);
-            }
-            #sidebar.open {
+            }}
+            #sidebar.open {{
                 transform: translateX(0);
-            }
-            #main-content {
+            }}
+            #main-content {{
                 margin-left: 0;
                 padding: 15px;
                 width: 100%;
                 box-sizing: border-box;
-            }
-            #menu-button {
+            }}
+            #menu-button {{
                 display: block;
-            }
-        }
+            }}
+        }}
     </style>
 </head>
 <body>
+    <div id="lang-switcher">
+        LANG_SWITCHER_PLACEHOLDER
+    </div>
     <button id="menu-button">☰</button>
     <div id="sidebar">
-        <h2>目录</h2>
+        <h2>{toc_title}</h2>
         TOC_PLACEHOLDER
     </div>
     <div id="main-content">
         CONTENT_PLACEHOLDER
     </div>
     <script>
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function () {{
         const links = document.querySelectorAll('#sidebar .toc a');
         const sections = new Map();
+        const sidebar = document.getElementById('sidebar');
 
-        // Create a map of sections to their corresponding links
-        links.forEach(link => {
+        links.forEach(link => {{
             const href = link.getAttribute('href');
-            if (href && href.startsWith('#')) {
-                try {
-                    // Use decodeURIComponent to handle encoded characters in hrefs
+            if (href && href.startsWith('#')) {{
+                try {{
                     const sectionId = decodeURIComponent(href.substring(1));
                     const section = document.getElementById(sectionId);
-                    if (section) {
+                    if (section) {{
                         sections.set(section, link);
-                    }
-                } catch (e) {
+                    }}
+                }} catch (e) {{
                     console.error('Could not decode URI Component or find section for href: ', href, e);
-                }
-            }
-        });
+                }}
+            }}
+        }});
 
         const sectionEntries = Array.from(sections.entries());
 
-        function updateActiveLink() {
+        function updateActiveLink() {{
             let activeSection = null;
-
-            // Find the last section that is at or above the top of the viewport
-            for (const [section, link] of sectionEntries) {
+            for (const [section, link] of sectionEntries) {{
                 const rect = section.getBoundingClientRect();
-                if (rect.top <= 1) { // 1px offset for precision
+                if (rect.top <= 1) {{
                     activeSection = section;
-                } else {
-                    // Since sections are ordered, we can break early
+                }} else {{
                     break;
-                }
-            }
+                }}
+            }}
             
-            // Special case for being at the very bottom of the page
-            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {{
                 const lastEntry = sectionEntries[sectionEntries.length - 1];
-                if (lastEntry) {
+                if (lastEntry) {{
                     activeSection = lastEntry[0];
-                }
-            }
+                }}
+            }}
 
-            // Remove 'active' class from all links
-            links.forEach(link => {
+            links.forEach(link => {{
                 link.classList.remove('active');
-            });
+            }});
 
-            // Add 'active' class to the link corresponding to the active section
-            if (activeSection) {
+            if (activeSection) {{
                 const activeLink = sections.get(activeSection);
-                if (activeLink) {
+                if (activeLink) {{
                     activeLink.classList.add('active');
-                }
-            } else if (links.length > 0) {
-                // If no section is active (e.g., at the very top), activate the first one
+                }}
+            }} else if (links.length > 0) {{
                 links[0].classList.add('active');
-            }
-        }
+            }}
+        }}
 
-        // Add scroll event listener
         window.addEventListener('scroll', updateActiveLink);
 
-        // Add click event listener to sidebar links for immediate feedback
-        links.forEach(link => {
-            link.addEventListener('click', function(event) {
-                // On mobile, close the sidebar after clicking a link
-                if (window.innerWidth <= 768) {
+        links.forEach(link => {{
+            link.addEventListener('click', function(event) {{
+                if (window.innerWidth <= 768) {{
                     sidebar.classList.remove('open');
-                }
-
-                // Use a short timeout to allow the scroll to happen before updating
-                setTimeout(() => {
-                    // Force an update after a click
+                }}
+                setTimeout(() => {{
                     updateActiveLink();
-                }, 50);
-            });
-        });
+                }}, 50);
+            }});
+        }});
 
-        // Initial check on page load
         updateActiveLink();
 
         const menuButton = document.getElementById('menu-button');
-        const sidebar = document.getElementById('sidebar');
-
-        menuButton.addEventListener('click', () => {
+        menuButton.addEventListener('click', () => {{
             sidebar.classList.toggle('open');
-        });
-    });
+        }});
+    }});
     </script>
 </body>
 </html>'''
 
-with open('whitepaper.md', 'r', encoding='utf-8') as f:
-    md_content = f.read()
+LANGUAGES = {
+    "zh": {
+        "file": "whitepaper.zh.md",
+        "title": "BKBTC 白皮书",
+        "toc_title": "目录",
+        "lang_name": "中文"
+    },
+    "en": {
+        "file": "whitepaper.en.md",
+        "title": "BKBTC White Paper",
+        "toc_title": "Table of Contents",
+        "lang_name": "English"
+    },
+    "ko": {
+        "file": "whitepaper.ko.md",
+        "title": "BKBTC 백서",
+        "toc_title": "목차",
+        "lang_name": "한국어"
+    },
+    "fr": {
+        "file": "whitepaper.fr.md",
+        "title": "Livre Blanc BKBTC",
+        "toc_title": "Table des matières",
+        "lang_name": "Français"
+    },
+    "ja": {
+        "file": "whitepaper.ja.md",
+        "title": "BKBTC 白書",
+        "toc_title": "目次",
+        "lang_name": "日本語"
+    }
+}
 
-md = markdown.Markdown(extensions=['tables', TocExtension(slugify=slugify, permalink=False)])
-html_content = md.convert(md_content)
-toc = md.toc
+def generate_lang_switcher(current_lang):
+    current_lang_name = LANGUAGES[current_lang]['lang_name']
+    links_html = ""
+    for lang, config in LANGUAGES.items():
+        links_html += f'<a href="./index.{lang}.html">{config["lang_name"]}</a>'
+    
+    return f'''<div class="dropdown">
+        <button class="dropbtn">{current_lang_name} <span class="arrow">▼</span></button>
+        <div id="lang-dropdown-content" class="dropdown-content">
+            {links_html}
+        </div>
+    </div>'''
 
-final_html = html_template.replace('TOC_PLACEHOLDER', toc).replace('CONTENT_PLACEHOLDER', html_content)
+for lang, config in LANGUAGES.items():
+    with open(config['file'], 'r', encoding='utf-8') as f:
+        md_content = f.read()
 
-with open('index.html', 'w', encoding='utf-8') as f:
-    f.write(final_html)
+    md = markdown.Markdown(extensions=['tables', TocExtension(slugify=slugify, permalink=False)])
+    html_content = md.convert(md_content)
+    toc = md.toc
+
+    lang_switcher = generate_lang_switcher(lang)
+
+    final_html = html_template.format(lang=lang, title=config['title'], toc_title=config['toc_title'])
+    final_html = final_html.replace('TOC_PLACEHOLDER', toc)
+    final_html = final_html.replace('CONTENT_PLACEHOLDER', html_content)
+    final_html = final_html.replace('LANG_SWITCHER_PLACEHOLDER', lang_switcher)
+
+    output_filename = f"index.{lang}.html"
+    with open(output_filename, 'w', encoding='utf-8') as f:
+        f.write(final_html)
+    
+    # Create a redirect from index.html to the default language version
+    if lang == "zh":
+        with open("index.html", "w", encoding="utf-8") as f:
+            f.write(f'''<meta http-equiv="refresh" content="0; url=./index.zh.html" />''')
+
+print("HTML files generated for all languages.")
