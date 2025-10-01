@@ -97,17 +97,17 @@ html_template = '''<!DOCTYPE html>
             display: block;
         }}
         .dropdown-content a:hover {{background-color: #f1f1f1}}
-        .dropdown:hover .dropdown-content {{
+        /* .dropdown:hover .dropdown-content {{
             display: block;
-        }}
+        }} */
         .arrow {{
             display: inline-block;
             margin-left: 5px;
             transition: transform 0.2s;
         }}
-        .dropdown:hover .arrow {{
+        /* .dropdown:hover .arrow {{
             transform: rotate(180deg);
-        }}
+        }} */
         @media (max-width: 768px) {{
             #sidebar {{
                 transform: translateX(-100%);
@@ -214,6 +214,23 @@ html_template = '''<!DOCTYPE html>
             sidebar.classList.toggle('open');
         }});
     }});
+    // 语言切换下拉菜单点击显示/隐藏
+    document.addEventListener('DOMContentLoaded', function () {{
+        const btn = document.getElementById('lang-dropbtn');
+        const content = document.getElementById('lang-dropdown-content');
+        if (btn && content) {{
+            btn.addEventListener('click', function(e) {{
+                e.stopPropagation();
+                content.style.display = content.style.display === 'block' ? 'none' : 'block';
+            }});
+            document.addEventListener('click', function() {{
+                content.style.display = 'none';
+            }});
+            content.addEventListener('click', function(e) {{
+                e.stopPropagation();
+            }});
+        }}
+    }});
     </script>
 </body>
 </html>'''
@@ -256,9 +273,8 @@ def generate_lang_switcher(current_lang):
     links_html = ""
     for lang, config in LANGUAGES.items():
         links_html += f'<a href="./index.{lang}.html">{config["lang_name"]}</a>'
-    
-    return f'''<div class="dropdown">
-        <button class="dropbtn">{current_lang_name} <span class="arrow">▼</span></button>
+    return f'''<div class="dropdown" id="lang-dropdown">
+        <button class="dropbtn" id="lang-dropbtn">{current_lang_name} <span class="arrow">▼</span></button>
         <div id="lang-dropdown-content" class="dropdown-content">
             {links_html}
         </div>
