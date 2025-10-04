@@ -1,21 +1,43 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BKBTC白皮书</title>
+    <title>BKBTC Whitepaper</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
 
 
+        <!-- 移动端覆盖层 -->
+        <div class="mobile-overlay" id="mobileOverlay"></div>
+
         <!-- 主要内容区域 -->
         <main class="main-content">
+            <!-- 语言切换器 - 移动到右上角 -->
+            <div class="language-switcher">
+                <button class="language-button" id="languageButton">
+                    <span class="language-flag" id="languageFlag">🇺🇸</span>
+                    <span class="language-name" id="languageName">English</span>
+                    <span class="language-arrow">▼</span>
+                </button>
+                <div class="language-dropdown" id="languageDropdown">
+                    <div class="language-option" data-lang="en">
+                        <span class="language-flag">🇺🇸</span>
+                        <span class="language-name">English</span>
+                    </div>
+                    <div class="language-option" data-lang="zh">
+                        <span class="language-flag">🇨🇳</span>
+                        <span class="language-name">中文</span>
+                    </div>
+                </div>
+            </div>
+
             <!-- 侧边栏目录 -->
             <aside class="sidebar">
                 <nav class="table-of-contents">
-                    <h2 class="toc-title">目录</h2>
+                    <h2 class="toc-title" id="toc-title">Table of Contents</h2>
                     <ul class="toc-list" id="tocList">
                         <!-- 目录项将通过JavaScript动态生成 -->
                     </ul>
@@ -27,10 +49,10 @@
                 <div class="content-wrapper">
                     <!-- 欢迎页面 -->
                     <div id="welcome-content" class="chapter-content active">
-                        <h1>BKBTC白皮书</h1>
-                        <h2>中东数字金融新纪元——全球首支比特币储备银行纳斯达克上市之路</h2>
-                        <p class="tagline">币股同行 · 生态闭环 · 跨境金融革命</p>
-                        <p>请从左侧目录中选择您想要查看的章节。</p>
+                        <h1 id="welcome-title">BKBTC Whitepaper</h1>
+                        <h2 id="welcome-subtitle">Middle East Digital Finance New Era — The World's First Bitcoin Reserve Bank's Path to NASDAQ Listing</h2>
+                        <p class="tagline" id="welcome-tagline">Coin-Stock Synergy · Ecosystem Closed Loop · Cross-border Financial Revolution</p>
+                        <p id="welcome-instruction">Please select a chapter from the table of contents on the left.</p>
                     </div>
 
                     <!-- 章节内容容器 -->
@@ -41,17 +63,14 @@
             </section>
         </main>
 
-        <!-- 页脚 -->
-        <footer class="footer">
-            <div class="footer-content">
-                <p>&copy; 2024 BKBTC. 保留所有权利。</p>
-                <p>沙特阿拉伯投资总会（迪拜）</p>
-            </div>
-        </footer>
+
     </div>
 
     <!-- 引入数据和脚本 -->
     <script src="data.js"></script>
+    <script src="i18n.js"></script>
+    <script src="content-en.js"></script>
+    <script src="i18n-manager.js"></script>
     <script src="script.js"></script>
     <script>
         // 确保数据加载完成后再初始化应用

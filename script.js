@@ -17,18 +17,22 @@ class WhitePaperApp {
     // 生成目录
     generateTableOfContents() {
         const tocList = document.getElementById('tocList');
-        if (!tocList || !whitePaperData) return;
+        if (!tocList) return;
 
         // 清空现有内容
         tocList.innerHTML = '';
 
+        // 获取当前语言的菜单结构
+        const menuStructure = window.i18nManager ? window.i18nManager.getMenuStructure() : whitePaperData.menuStructure;
+        const ui = window.i18nManager ? i18nConfig.ui[window.i18nManager.currentLanguage] : { home: '首页' };
+
         // 添加首页链接
-        const homeItem = this.createTocItem('home', '首页', 0, true);
+        const homeItem = this.createTocItem('home', ui.home || '首页', 0, true);
         tocList.appendChild(homeItem);
 
         // 生成三级目录结构
-        if (whitePaperData.menuStructure) {
-            whitePaperData.menuStructure.forEach(item => {
+        if (menuStructure) {
+            menuStructure.forEach(item => {
                 const tocItem = this.createMultiLevelTocItem(item);
                 tocList.appendChild(tocItem);
             });
@@ -114,13 +118,31 @@ class WhitePaperApp {
                     const itemId = e.target.dataset.itemId;
                     const level = parseInt(e.target.dataset.level);
                     
-                    // 如果是可展开的项目
-                    if (e.target.classList.contains('expandable')) {
-                        this.toggleMenuItem(e.target, itemId, level);
-                    } else {
-                        // 如果是叶子节点，显示内容
+                    // 查找对应的项目，检查是否有contentId
+                    const findItem = (items) => {
+                        for (let item of items) {
+                            if (item.id === itemId) {
+                                return item;
+                            }
+                            if (item.children) {
+                                const found = findItem(item.children);
+                                if (found) return found;
+                            }
+                        }
+                        return null;
+                    };
+                    
+                    const item = findItem(whitePaperData.menuStructure || []);
+                    
+                    // 如果项目有内容，显示内容
+                    if (item && item.contentId) {
                         this.showContentByItemId(itemId);
                         this.updateActiveLink(e.target);
+                    }
+                    
+                    // 如果是可展开的项目，处理展开/折叠
+                    if (e.target.classList.contains('expandable')) {
+                        this.toggleMenuItem(e.target, itemId, level);
                     }
                 } else {
                     // 兼容旧的章节ID
@@ -270,7 +292,9 @@ class WhitePaperApp {
 
     // 显示指定章节
     showChapter(chapterId) {
-        const chapter = whitePaperData.chapters.find(ch => ch.id === chapterId);
+        // 获取当前语言的章节数据
+        const chapters = window.i18nManager ? window.i18nManager.getChapters() : whitePaperData.chapters;
+        const chapter = chapters.find(ch => ch.id === chapterId);
         if (!chapter) return;
 
         const welcomeContent = document.getElementById('welcome-content');
@@ -280,13 +304,17 @@ class WhitePaperApp {
             welcomeContent.classList.remove('active');
             chapterContent.classList.add('active');
             
+            // 获取当前语言的UI文本
+            const ui = window.i18nManager ? i18nConfig.ui[window.i18nManager.currentLanguage] : { backToHome: '← 返回首页' };
+            const title = window.i18nManager ? i18nConfig.ui[window.i18nManager.currentLanguage].title : 'BKBTC白皮书';
+            
             // 渲染章节内容
             chapterContent.innerHTML = `
                 <div class="chapter-header">
                     <h1 class="chapter-title">${chapter.title}</h1>
                     <div class="chapter-meta">
                         <button class="back-to-home" onclick="app.showWelcomePage()">
-                            ← 返回首页
+                            ${ui.backToHome || '← 返回首页'}
                         </button>
                     </div>
                 </div>
@@ -300,38 +328,72 @@ class WhitePaperApp {
         }
         
         this.currentChapter = chapterId;
-        this.updatePageTitle(`${chapter.title} - BKBTC白皮书`);
+        this.updatePageTitle(`${chapter.title} - ${title}`);
         
         // 滚动到顶部
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // 生成章节导航
+    // 扁平化目录结构，获取所有有内容的项目
+    flattenMenuStructure(items = null, result = []) {
+        if (!items) {
+            items = window.i18nManager ? window.i18nManager.getMenuStructure() : whitePaperData.menuStructure;
+        }
+        
+        items.forEach(item => {
+            if (item.contentId) {
+                result.push({
+                    id: item.id,
+                    title: item.title,
+                    level: item.level,
+                    contentId: item.contentId
+                });
+            }
+            if (item.children && item.children.length > 0) {
+                this.flattenMenuStructure(item.children, result);
+            }
+        });
+        return result;
+    }
+
+    // 找到同级目录项目
+    findSiblingItems(currentItemId) {
+        const findItemAndSiblings = (items, targetId, parentLevel = null) => {
+            for (let i = 0; i < items.length; i++) {
+                const item = items[i];
+                
+                // 如果找到目标项目
+                if (item.id === targetId) {
+                    // 找到同级的所有有内容的项目
+                    const siblings = items.filter(sibling => 
+                        sibling.contentId && sibling.level === item.level
+                    );
+                    const currentIndex = siblings.findIndex(s => s.id === targetId);
+                    return {
+                        siblings,
+                        currentIndex,
+                        currentLevel: item.level
+                    };
+                }
+                
+                // 递归搜索子项目
+                if (item.children && item.children.length > 0) {
+                    const result = findItemAndSiblings(item.children, targetId, item.level);
+                    if (result) return result;
+                }
+            }
+            return null;
+        };
+
+        return findItemAndSiblings(whitePaperData.menuStructure, currentItemId);
+    }
+
+
+
+    // 生成同级目录导航（已隐藏）
     generateChapterNavigation(currentChapterId) {
-        const currentIndex = whitePaperData.chapters.findIndex(ch => ch.id === currentChapterId);
-        const prevChapter = currentIndex > 0 ? whitePaperData.chapters[currentIndex - 1] : null;
-        const nextChapter = currentIndex < whitePaperData.chapters.length - 1 ? whitePaperData.chapters[currentIndex + 1] : null;
-        
-        let navigation = '<div class="nav-buttons">';
-        
-        if (prevChapter) {
-            navigation += `
-                <button class="nav-btn prev-btn" onclick="app.showChapter('${prevChapter.id}')">
-                    ← ${prevChapter.title}
-                </button>
-            `;
-        }
-        
-        if (nextChapter) {
-            navigation += `
-                <button class="nav-btn next-btn" onclick="app.showChapter('${nextChapter.id}')">
-                    ${nextChapter.title} →
-                </button>
-            `;
-        }
-        
-        navigation += '</div>';
-        return navigation;
+        // 隐藏底部快捷跳转功能
+        return '<div class="nav-buttons"></div>';
     }
 
     // 更新活动链接
@@ -380,8 +442,21 @@ class WhitePaperApp {
     }
 }
 
-// 初始化应用
+// 创建应用实例
 const app = new WhitePaperApp();
+
+// 全局函数，供多语言管理器调用
+window.generateTOC = function() {
+    if (app) {
+        app.generateTableOfContents();
+    }
+};
+
+window.showChapter = function(chapterId) {
+    if (app) {
+        app.showChapter(chapterId);
+    }
+};
 
 // 全局工具函数
 function scrollToTop() {
