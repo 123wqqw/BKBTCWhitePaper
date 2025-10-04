@@ -309,6 +309,12 @@ class WhitePaperApp {
         if (homeLink) {
             this.updateActiveLink(homeLink);
         }
+        
+        // 隐藏移动端返回首页按钮
+        const mobileHomeBtn = document.getElementById('mobileHomeBtn');
+        if (mobileHomeBtn) {
+            mobileHomeBtn.style.display = 'none';
+        }
     }
 
     // 显示指定章节
@@ -353,6 +359,12 @@ class WhitePaperApp {
         
         // 更新URL hash
         this.updateUrlHash(chapterId);
+        
+        // 显示移动端返回首页按钮
+        const mobileHomeBtn = document.getElementById('mobileHomeBtn');
+        if (mobileHomeBtn) {
+            mobileHomeBtn.style.display = '';
+        }
         
         // 滚动到顶部
         window.scrollTo({ top: 0, behavior: 'smooth' });
