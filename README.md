@@ -15,27 +15,20 @@ BKBTC白皮书 - 中东数字金融新纪元，全球首支比特币储备银行
 
 ### GitHub Pages 地址
 ```
-https://[您的GitHub用户名].github.io/BKBTCWhitePaper/
+https://123wqqw.github.io/BKBTCWhitePaper/
 ```
 
 ### 本地运行
 
 1. 克隆项目到本地
 ```bash
-git clone https://github.com/[您的GitHub用户名]/BKBTCWhitePaper.git
+git clone https://github.com/123wqqw/BKBTCWhitePaper.git
 cd BKBTCWhitePaper
 ```
 
 2. 启动本地服务器
 ```bash
-# 使用Python
-python3 -m http.server 8000
-
-# 或使用Node.js
-npx serve .
-
-# 或使用PHP
-php -S localhost:8000
+python3 server.py
 ```
 
 3. 在浏览器中访问 `http://localhost:8000`
