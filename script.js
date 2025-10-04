@@ -279,7 +279,9 @@ class WhitePaperApp {
             return null;
         };
         
-        const contentId = findContentId(whitePaperData.menuStructure || []);
+        // 使用国际化管理器的菜单结构
+        const menuStructure = window.i18nManager ? window.i18nManager.getMenuStructure() : whitePaperData.menuStructure;
+        const contentId = findContentId(menuStructure || []);
         if (contentId) {
             this.showChapter(contentId);
         }
@@ -316,16 +318,16 @@ class WhitePaperApp {
         const chapter = chapters.find(ch => ch.id === chapterId);
         if (!chapter) return;
 
+        // 获取当前语言的UI文本
+        const ui = window.i18nManager ? i18nConfig.ui[window.i18nManager.currentLanguage] : { backToHome: '← 返回首页' };
+        const title = window.i18nManager ? i18nConfig.ui[window.i18nManager.currentLanguage].title : 'BKBTC白皮书';
+
         const welcomeContent = document.getElementById('welcome-content');
         const chapterContent = document.getElementById('chapter-content');
         
         if (welcomeContent && chapterContent) {
             welcomeContent.classList.remove('active');
             chapterContent.classList.add('active');
-            
-            // 获取当前语言的UI文本
-            const ui = window.i18nManager ? i18nConfig.ui[window.i18nManager.currentLanguage] : { backToHome: '← 返回首页' };
-            const title = window.i18nManager ? i18nConfig.ui[window.i18nManager.currentLanguage].title : 'BKBTC白皮书';
             
             // 渲染章节内容
             chapterContent.innerHTML = `
@@ -334,9 +336,6 @@ class WhitePaperApp {
                     <div class="chapter-meta">
                         <button class="back-to-home" onclick="app.showWelcomePage()">
                             ${ui.backToHome || '← 返回首页'}
-                        </button>
-                        <button class="copy-link-btn" onclick="app.copyChapterLink('${chapterId}')" title="复制本章节链接">
-                            📋 复制链接
                         </button>
                     </div>
                 </div>
@@ -587,70 +586,7 @@ class WhitePaperApp {
         return `${baseUrl}#${chapterId}`;
     }
 
-    // 复制章节链接到剪贴板
-    async copyChapterLink(chapterId) {
-        const url = this.generateChapterUrl(chapterId);
-        
-        try {
-            await navigator.clipboard.writeText(url);
-            
-            // 显示成功提示
-            this.showCopySuccess();
-        } catch (err) {
-            // 降级方案：使用传统方法复制
-            const textArea = document.createElement('textarea');
-            textArea.value = url;
-            document.body.appendChild(textArea);
-            textArea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textArea);
-            
-            this.showCopySuccess();
-        }
-    }
 
-    // 显示复制成功提示
-    showCopySuccess() {
-        // 创建提示元素
-        const toast = document.createElement('div');
-        toast.className = 'copy-success-toast';
-        toast.textContent = '✅ 链接已复制到剪贴板';
-        toast.style.cssText = `
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: #10b981;
-            color: white;
-            padding: 12px 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            z-index: 10000;
-            font-size: 14px;
-            font-weight: 500;
-            opacity: 0;
-            transform: translateY(-10px);
-            transition: all 0.3s ease;
-        `;
-        
-        document.body.appendChild(toast);
-        
-        // 显示动画
-        setTimeout(() => {
-            toast.style.opacity = '1';
-            toast.style.transform = 'translateY(0)';
-        }, 10);
-        
-        // 3秒后移除
-        setTimeout(() => {
-            toast.style.opacity = '0';
-            toast.style.transform = 'translateY(-10px)';
-            setTimeout(() => {
-                if (toast.parentNode) {
-                    document.body.removeChild(toast);
-                }
-            }, 300);
-        }, 3000);
-    }
 }
 
 // 创建应用实例
@@ -750,7 +686,24 @@ function initMobileMenu() {
 
 // 监听窗口大小变化
 window.addEventListener('resize', handleResize);
+// 初始化移动端返回首页按钮
+function initMobileHomeBtn() {
+    const mobileHomeBtn = document.getElementById('mobileHomeBtn');
+    
+    if (mobileHomeBtn) {
+        mobileHomeBtn.addEventListener('click', function() {
+            // 返回首页
+            app.showWelcomePage();
+            // 更新URL
+            window.location.hash = '';
+            // 关闭移动端菜单（如果打开的话）
+            closeMobileMenu();
+        });
+    }
+}
+
 window.addEventListener('load', function() {
     handleResize();
     initMobileMenu();
+    initMobileHomeBtn();
 });

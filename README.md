@@ -33,6 +33,13 @@ python3 server.py
 
 3. 在浏览器中访问 `http://localhost:8000`
 
+## 生产环境访问
+
+项目已部署到GitHub Pages，可直接访问：
+```
+https://123wqqw.github.io/BKBTCWhitePaper/
+```
+
 ## 部署到GitHub Pages
 
 ### 方法一：通过GitHub网页界面
