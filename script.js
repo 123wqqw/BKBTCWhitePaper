@@ -310,11 +310,7 @@ class WhitePaperApp {
             this.updateActiveLink(homeLink);
         }
         
-        // 隐藏移动端返回首页按钮
-        const mobileHomeBtn = document.getElementById('mobileHomeBtn');
-        if (mobileHomeBtn) {
-            mobileHomeBtn.style.display = 'none';
-        }
+
     }
 
     // 显示指定章节
@@ -325,7 +321,7 @@ class WhitePaperApp {
         if (!chapter) return;
 
         // 获取当前语言的UI文本
-        const ui = window.i18nManager ? i18nConfig.ui[window.i18nManager.currentLanguage] : { backToHome: '← 返回首页' };
+        const ui = window.i18nManager ? i18nConfig.ui[window.i18nManager.currentLanguage] : {};
         const title = window.i18nManager ? i18nConfig.ui[window.i18nManager.currentLanguage].title : 'BKBTC白皮书';
 
         const welcomeContent = document.getElementById('welcome-content');
@@ -339,11 +335,6 @@ class WhitePaperApp {
             chapterContent.innerHTML = `
                 <div class="chapter-header">
                     <h1 class="chapter-title">${chapter.title}</h1>
-                    <div class="chapter-meta">
-                        <button class="back-to-home" onclick="app.showWelcomePage()">
-                            ${ui.backToHome || '← 返回首页'}
-                        </button>
-                    </div>
                 </div>
                 <div class="chapter-body">
                     ${chapter.content}
@@ -360,11 +351,7 @@ class WhitePaperApp {
         // 更新URL hash
         this.updateUrlHash(chapterId);
         
-        // 显示移动端返回首页按钮
-        const mobileHomeBtn = document.getElementById('mobileHomeBtn');
-        if (mobileHomeBtn) {
-            mobileHomeBtn.style.display = '';
-        }
+
         
         // 滚动到顶部
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -698,24 +685,9 @@ function initMobileMenu() {
 
 // 监听窗口大小变化
 window.addEventListener('resize', handleResize);
-// 初始化移动端返回首页按钮
-function initMobileHomeBtn() {
-    const mobileHomeBtn = document.getElementById('mobileHomeBtn');
-    
-    if (mobileHomeBtn) {
-        mobileHomeBtn.addEventListener('click', function() {
-            // 返回首页
-            app.showWelcomePage();
-            // 更新URL
-            window.location.hash = '';
-            // 关闭移动端菜单（如果打开的话）
-            closeMobileMenu();
-        });
-    }
-}
+
 
 window.addEventListener('load', function() {
     handleResize();
     initMobileMenu();
-    initMobileHomeBtn();
 });

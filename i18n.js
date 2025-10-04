@@ -24,8 +24,7 @@ const i18nConfig = {
       languageSelector: "Language",
       mobileMenu: "Menu",
       tableOfContents: "Table of Contents",
-      home: "Home",
-      backToHome: "← Back to Home"
+      home: "Home"
     },
     zh: {
       title: "BKBTC白皮书",
@@ -34,8 +33,7 @@ const i18nConfig = {
       languageSelector: "语言",
       mobileMenu: "菜单",
       tableOfContents: "目录",
-      home: "首页",
-      backToHome: "← 返回首页"
+      home: "首页"
     }
   },
   
