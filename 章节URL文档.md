@@ -10,11 +10,7 @@
 
 ### 1. 项目介绍
 #### 1.1 愿景和战略定位
-##### 1.1.1 我们是谁
-- **我们是谁**: `https://123wqqw.github.io/BKBTCWhitePaper/#who-we-are`
-  - **核心使命和价值**: `https://123wqqw.github.io/BKBTCWhitePaper/#core-mission-value`
-  - **赋能全球投资者**: `https://123wqqw.github.io/BKBTCWhitePaper/#bankbtc-overview`
-  - **构建全球非投资生态**: `https://123wqqw.github.io/BKBTCWhitePaper/#global-ecosystem`
+- **愿景和战略定位**: `https://123wqqw.github.io/BKBTCWhitePaper/#vision-strategy`
 
 ### 2. 我们的定位
 - **我们的定位**: `https://123wqqw.github.io/BKBTCWhitePaper/#our-positioning`

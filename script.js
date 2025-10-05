@@ -2,16 +2,12 @@
 class WhitePaperApp {
     constructor() {
         this.currentChapter = null;
-        this.init();
     }
 
     init() {
-        // 等待DOM加载完成
-        document.addEventListener('DOMContentLoaded', () => {
-            this.generateTableOfContents();
-            this.bindEvents();
-            this.handleInitialRoute();
-        });
+        this.generateTableOfContents();
+        this.bindEvents();
+        this.handleInitialRoute();
     }
 
     // 生成目录
@@ -24,11 +20,6 @@ class WhitePaperApp {
 
         // 获取当前语言的菜单结构
         const menuStructure = window.i18nManager ? window.i18nManager.getMenuStructure() : whitePaperData.menuStructure;
-        const ui = window.i18nManager ? i18nConfig.ui[window.i18nManager.currentLanguage] : { home: '首页' };
-
-        // 添加首页链接到最前面
-        const homeItem = this.createTocItem('home', ui.home || '首页', 0, true);
-        tocList.appendChild(homeItem);
 
         // 生成三级目录结构
         if (menuStructure) {
@@ -81,19 +72,15 @@ class WhitePaperApp {
     }
 
     // 创建目录项（保留兼容性）
-    createTocItem(id, title, level = 0, isHome = false) {
+    createTocItem(id, title, level = 0) {
         const li = document.createElement('li');
-        li.className = 'toc-item';
+        li.className = `toc-item level-${level}`;
         
         const link = document.createElement('a');
         link.href = '#';
         link.className = 'toc-link';
         link.dataset.chapterId = id;
         link.textContent = title;
-        
-        if (isHome) {
-            link.classList.add('home-link');
-        }
         
         li.appendChild(link);
         return li;
@@ -105,15 +92,6 @@ class WhitePaperApp {
         document.addEventListener('click', (e) => {
             if (e.target.classList.contains('toc-link')) {
                 e.preventDefault();
-                
-                // 处理首页链接
-                if (e.target.dataset.chapterId === 'home') {
-                    this.showWelcomePage();
-                    this.updateActiveLink(e.target);
-                    // 移动端菜单关闭逻辑
-                    setTimeout(closeMobileMenu, 100);
-                    return;
-                }
                 
                 // 处理多级目录
                 if (e.target.dataset.itemId) {
@@ -289,28 +267,8 @@ class WhitePaperApp {
 
     // 显示欢迎页面
     showWelcomePage() {
-        const welcomeContent = document.getElementById('welcome-content');
-        const chapterContent = document.getElementById('chapter-content');
-        
-        if (welcomeContent && chapterContent) {
-            welcomeContent.classList.add('active');
-            chapterContent.classList.remove('active');
-            chapterContent.innerHTML = '';
-        }
-        
-        this.currentChapter = null;
-        this.updatePageTitle('BKBTC白皮书');
-        
-        // 清除URL hash
-        this.updateUrlHash('home');
-        
-        // 更新活动链接
-        const homeLink = document.querySelector('.toc-link[data-chapter-id="home"]');
-        if (homeLink) {
-            this.updateActiveLink(homeLink);
-        }
-        
-
+        // 重定向到项目介绍页面
+        this.navigateToChapter('introduction');
     }
 
     // 显示指定章节
@@ -324,11 +282,9 @@ class WhitePaperApp {
         const ui = window.i18nManager ? i18nConfig.ui[window.i18nManager.currentLanguage] : {};
         const title = window.i18nManager ? i18nConfig.ui[window.i18nManager.currentLanguage].title : 'BKBTC白皮书';
 
-        const welcomeContent = document.getElementById('welcome-content');
         const chapterContent = document.getElementById('chapter-content');
         
-        if (welcomeContent && chapterContent) {
-            welcomeContent.classList.remove('active');
+        if (chapterContent) {
             chapterContent.classList.add('active');
             
             // 渲染章节内容
@@ -470,7 +426,7 @@ class WhitePaperApp {
         if (hash) {
             this.navigateToChapter(hash);
         } else {
-            this.showWelcomePage();
+            this.navigateToChapter('introduction');
         }
     }
 
@@ -480,7 +436,7 @@ class WhitePaperApp {
         if (hash) {
             this.navigateToChapter(hash);
         } else {
-            this.showWelcomePage();
+            this.navigateToChapter('introduction');
         }
     }
 
@@ -515,8 +471,12 @@ class WhitePaperApp {
                 this.expandParentItems(chapterId);
             }
         } else {
-            // 如果找不到对应的章节，显示欢迎页面
-            this.showWelcomePage();
+            // 如果找不到对应的章节，显示项目介绍
+            if (chapterId !== 'introduction') {
+                this.navigateToChapter('introduction');
+            } else {
+                console.error('无法找到项目介绍章节');
+            }
         }
     }
 
@@ -568,7 +528,7 @@ class WhitePaperApp {
 
     // 更新URL hash（不触发hashchange事件）
     updateUrlHash(chapterId) {
-        if (chapterId && chapterId !== 'home') {
+        if (chapterId) {
             history.replaceState(null, null, `#${chapterId}`);
         } else {
             history.replaceState(null, null, window.location.pathname);
@@ -590,6 +550,16 @@ class WhitePaperApp {
 
 // 创建应用实例
 const app = new WhitePaperApp();
+
+// 确保DOM加载完成后再初始化应用
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+        app.init();
+    });
+} else {
+    // DOM已经加载完成
+    app.init();
+}
 
 // 全局函数，供多语言管理器调用
 window.generateTOC = function() {

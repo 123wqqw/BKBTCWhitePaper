@@ -1,13 +1,6 @@
 // English content data
 const contentEn = [
-  {
-    id: "who-we-are",
-    title: "Who We Are",
-    content: `
-      <h2>Who We Are?</h2>
-      <p>We are a team focused on Bitcoin reserves and digital financial innovation, committed to building a globally leading digital asset management platform.</p>
-    `
-  },
+
   {
     id: "bankbtc-overview",
     title: "Empowering Global Investors",
@@ -22,47 +15,24 @@ const contentEn = [
     content: `
       <h2>BKBTC Economics</h2>
       <p>The total supply of BKBTC tokens will issue <strong>21,000,000</strong> tokens.</p>
-    `
-  },
-  {
-    id: "token-supply-distribution",
-    title: "BKBTC Token Supply Distribution",
-    content: `
-      <h2>BKBTC Token Supply Distribution</h2>
+      
+      <h4>BKBTC Token Supply Distribution</h4>
       <p>All BKBTC tokens are obtained through minting lottery.</p>
-    `
-  },
-  {
-    id: "fee-burn",
-    title: "Fee Burn",
-    content: `
-      <h2>Fee Burn</h2>
+      
+      <h4>Burn Mechanisms</h4>
+      
+      <h5>Fee Burn</h5>
       <p>Participants who mint and receive corresponding rewards will trigger fee burn when withdrawing, with burn rate of 7% of daily withdrawals.</p>
       <p><strong>Formula:</strong> Burn Amount = Daily BTC Withdrawal × 7%</p>
-    `
-  },
-  {
-    id: "game-burn",
-    title: "Game Burn",
-    content: `
-      <h2>Game Burn</h2>
+      
+      <h5>Game Burn</h5>
       <p>The gaming center charges different fees based on different gaming paths.</p>
       <p><strong>Example:</strong> Battle Royale game charges 5% fee from participating players every 60 seconds for burning.</p>
-    `
-  },
-  {
-    id: "ecosystem-burn",
-    title: "Ecosystem Burn",
-    content: `
-      <h2>Ecosystem Burn</h2>
+      
+      <h5>Ecosystem Burn</h5>
       <p>Ecosystem burn mechanism to maintain token value and scarcity.</p>
-    `
-  },
-  {
-    id: "burn-end",
-    title: "Burn End",
-    content: `
-      <h2>Burn End</h2>
+      
+      <h5>Burn End</h5>
       <p>The burn mechanism will end when specific conditions are met.</p>
     `
   },
@@ -119,116 +89,19 @@ const contentEn = [
           </tr>
         </tbody>
       </table>
-    `
-  },
-  {
-    id: "type-one",
-    title: "Type One",
-    content: `
-      <h2>Type One</h2>
-      <p>RWA Deterministic Finance - Starting a New Track in Bitcoin Ecosystem</p>
-      <p>Stake BKBTC to get BTC, earn annual yield <strong>10%-160%</strong></p>
-      <p>Investment principal uses BKBTC</p>
-      <p>Draw date is <strong>3 days</strong></p>
-      <p>Choose BTC rise or fall</p>
-      <p>Annual rates are <strong>160%</strong> and <strong>10%</strong></p>
-      <p>When current selected price matches exchange price correctly, get <strong>160%</strong> daily yield in BTC</p>
-      <p>When current selected price matches exchange price incorrectly, get <strong>10%</strong> daily yield in BTC</p>
-      <p>Maximum single account deposit value of <strong>1 BTC</strong> worth of BKBTC</p>
-    `
-  },
-  {
-    id: "type-two",
-    title: "Type Two",
-    content: `
-      <h2>Type Two - Chain Game Finance Type</h2>
-      <h3>Making BKBTC Greater</h3>
-      <p>Non-active investment</p>
-      <p>When Battle Royale participants trigger wins in each round, they will receive fragments. When fragments accumulate to <strong>0.01 BTC value</strong>, it automatically triggers BTC finance feedback</p>
-      <p>BTC finance product is passively triggered</p>
-      <p>When BKBTC collection reaches <strong>1 BTC value</strong>, according to weighted dividends, get <strong>10% of total</strong> 1 BTC value BKBTC released to stakers</p>
-      <p>When releasers obtain <strong>0.01 BTC value</strong>, exit to accelerate BKBTC ecosystem development</p>
-    `
-  },
-  {
-    id: "game-time",
-    title: "Game Time",
-    content: `
-      <h2>Game Time</h2>
-      <p>Daily <strong>9 AM - 2 AM</strong></p>
-      <p>Game interval time is <strong>60s</strong></p>
-      <p>Room selection includes <strong>8 styled rooms</strong>, players can freely choose to join one and decide how much BKBTC to invest in this battle</p>
-      <p>After countdown ends, the mysterious killer will randomly select one room, ruthlessly eliminating all BKBTC in that room. Players in the selected room are losers, while the other <strong>7 rooms</strong> successfully escape and become winners</p>
-    `
-  },
-  {
-    id: "game-business-model",
-    title: "In-Game Business Model and Distribution Rules",
-    content: `
-      <h2>In-Game Business Model and Distribution Rules</h2>
-      <p>Transaction fee <strong>5%</strong> - Platform collection</p>
-      <p>Winner upline dividend <strong>3%</strong></p>
-      <p>Leaderboard revenue pool <strong>2%</strong></p>
-      <p>Winner weighted dividend - <strong>80%</strong></p>
-      <p>Chain game finance dividend <strong>10%</strong></p>
-    `
-  },
-  {
-    id: "weekly-dividend",
-    title: "Weekly Dividends",
-    content: `
-      <h2>Weekly Dividends</h2>
-      <p>Top <strong>50</strong> participants by volume</p>
-      <p>1st place gets <strong>50%</strong> of dividend pool</p>
-      <p>2nd place gets <strong>20%</strong> of dividend pool</p>
-      <p>3rd-10th place get <strong>10%</strong> of dividend pool</p>
-      <p>10th-20th place get <strong>8%</strong> of dividend pool</p>
-      <p>20th-30th place get <strong>7%</strong> of dividend pool</p>
-      <p>30th-40th place get <strong>5%</strong> of dividend pool</p>
-    `
-  },
-  {
-    id: "game-selection-rules",
-    title: "Game Selection Rules",
-    content: `
-      <h2>Game Selection Rules</h2>
-      <p>The last digit of the block hash determines which room to eliminate</p>
-      <p>If <strong>0 or 9</strong> appears, it's a tie, triggering an easter egg where each player receives <strong>1 diamond</strong> airdrop. Diamonds will later become whitelist shares for the second phase chain game.</p>
-      <p><strong>External Links</strong></p>
-      <p><a href="https://bkbtc.btcfirwa.fun/" target="_blank">BKBTC Chain Game Center</a></p>
-      <p><a href="#" onclick="alert('Not yet updated'); return false;">Finance Telegram Group</a></p>
-      <p><a href="#" onclick="alert('Not yet updated'); return false;">Twitter</a></p>
-    `
-  },
-  {
-    id: "strategic-partners",
-    title: "Strategic Partners",
-    content: `
-      <h2>Strategic Partners</h2>
+
+      <h3>Strategic Partners</h3>
       <p>Bitmain, Binance, OKX, and Bitcoin-related wallets or institutions</p>
-    `
-  },
-  {
-    id: "node-total",
-    title: "Node Total",
-    content: `
-      <h2>Node Total</h2>
+
+      <h3>BTC Bank Rules</h3>
+      
+      <h4>Node Total</h4>
       <p>105 nodes, 10,000 tokens each; 1,050 light nodes, 1,000 tokens each. 10% unlocked upon launch, then 1% daily gold-standard BKBTC distribution after 10 days</p>
-    `
-  },
-  {
-    id: "node-rights",
-    title: "Node Rights",
-    content: `
-      <h2>Node Rights</h2>
+      
+      <h4>Node Rights</h4>
       <p>All revenue withdrawals have 10% fee, nodes get 3% revenue, 7% BKBTC burned</p>
-    `
-  },
-  {
-    id: "counter-deposit-level2",
-    title: "Counter Deposit",
-    content: `
-      <h2>Counter Deposit</h2>
+
+      <h3>Counter Deposit</h3>
       <p><strong>Deposit/Withdrawal Rules:</strong></p>
       <p>• 0.001 BTC multiples</p>
       <p>• Deposit 1, withdraw 3</p>
@@ -237,45 +110,22 @@ const contentEn = [
       <p><strong>Circular Re-deposit Referral Rewards:</strong></p>
       <p>• Counter deposit reward 1st generation: 10%</p>
       <p>• Counter deposit reward 2nd generation: 5%</p>
-    `
-  },
-  {
-    id: "minting-conditions",
-    title: "Minting Conditions",
-    content: `
-      <h2>Minting Conditions</h2>
+
+      <h3>Rule Description</h3>
+      
+      <h4>Minting Conditions</h4>
       <p>Each portion: 0.001 BTC and 5% BTC value worth of BKBTC</p>
-    `
-  },
-  {
-    id: "gameplay-instructions",
-    title: "Gameplay Instructions",
-    content: `
-      <h2>Gameplay Instructions</h2>
+      
+      <h4>Gameplay Instructions</h4>
       <p>2 sessions per day</p>
-    `
-  },
-  {
-    id: "time-periods",
-    title: "Time Periods",
-    content: `
-      <h2>Time Periods</h2>
+      
+      <h4>Time Periods</h4>
       <p>First session: Daily 12:00 - 17:00; Second session: Daily 18:00 - 23:00</p>
-    `
-  },
-  {
-    id: "winning-conditions",
-    title: "Winning Conditions",
-    content: `
-      <h2>Winning Conditions</h2>
+      
+      <h4>Winning Conditions</h4>
       <p>Stop participation at end time, prize pool randomly distributed, 21 participants form 1 group, draw reward winners: Get 150% monthly BKBTC reward. Non-winners: Participation amount returned, consume 10% BKBTC fee, get 2% BTC reward. Daily 4%</p>
-    `
-  },
-  {
-    id: "team-minting-rewards",
-    title: "Team Minting Rewards",
-    content: `
-      <h2>Team Minting Rewards</h2>
+      
+      <h4>Team Minting Rewards</h4>
       <p>Refer 1 person get 2 generations, maximum reward 20 generations</p>
       <p><strong>Minting Volume Reward Ratios:</strong></p>
       <p>• 1st generation: 20%</p>
@@ -286,6 +136,63 @@ const contentEn = [
       <p>Your team minting volume reaches 1.05M USDT worth of BTC, 50K USDT gets minting, 1M USDT doesn't get minting, mint once 2% = 20K USDT, 20 generation minting volume, 20K USDT ÷ 20 = 1K USDT, 2 times per day = 2K USDT worth of BTC, monthly = 60K USDT worth of BTC revenue</p>
     `
   },
+
+  {
+    id: "battle-royale-finance",
+    title: "Battle Royale and Finance Pool",
+    content: `
+      <h2>Battle Royale and Finance Pool</h2>
+      
+      <h2>The finance pool is mainly divided into two types:</h2>
+      
+      <h3>Type One</h3>
+      <p>RWA Deterministic Finance - Starting a New Track in Bitcoin Ecosystem. Stake BKBTC to get BTC, earn annual yield 10%-160%. Investment principal uses BKBTC. Draw date is 3 days. Choose BTC rise or fall. Annual rates are 160% and 10%. When current selected price matches exchange price correctly, get 160% daily yield in BTC. When current selected price matches exchange price incorrectly, get 10% daily yield in BTC. Maximum single account deposit value of 1 BTC worth of BKBTC.</p>
+      
+      <h3>Type Two</h3>
+      <p>Chain Game Finance Type - Making BKBTC Greater. Non-active investment. When Battle Royale participants trigger wins in each round, they will receive fragments. When fragments accumulate to 0.01 quantity value of BTC, it automatically triggers BTC finance feedback. BTC finance product is passively triggered. When BKBTC collection reaches 1 BTC value, according to weighted dividends, get 10% of total 1 BTC value BKBTC released to stakers, when releasers obtain 0.01 BTC value, exit to accelerate BKBTC ecosystem development.</p>
+    `
+  },
+  {
+    id: "battle-royale-rules",
+    title: "Battle Royale Game Rules",
+    content: `
+      <h2>Battle Royale Game Rules</h2>
+      
+      <h3>Game Time</h3>
+      <p>Daily <strong>9 AM - 2 AM</strong></p>
+      <p>Game interval time is <strong>60s</strong></p>
+      <p>Room selection includes <strong>8 styled rooms</strong>, players can freely choose to join one and decide how much BKBTC to invest in this battle</p>
+      <p>After countdown ends, the mysterious killer will randomly select one room, ruthlessly eliminating all BKBTC in that room. Players in the selected room are losers, while the other <strong>7 rooms</strong> successfully escape and become winners</p>
+      
+      <h3>In-Game Business Model and Distribution Rules</h3>
+      <p>Transaction fee <strong>5%</strong> - Platform collection</p>
+      <p>Winner upline dividend <strong>3%</strong></p>
+      <p>Leaderboard revenue pool <strong>2%</strong></p>
+      <p>Winner weighted dividend - <strong>80%</strong></p>
+      <p>Chain game finance dividend <strong>10%</strong></p>
+      
+      <h3>Leaderboard Reward Mechanism</h3>
+      <h4>Weekly Dividends</h4>
+      <p>Top <strong>50</strong> participants by volume</p>
+      <p>1st place gets <strong>50%</strong> of dividend pool</p>
+      <p>2nd place gets <strong>20%</strong> of dividend pool</p>
+      <p>3rd-10th place get <strong>10%</strong> of dividend pool</p>
+      <p>10th-20th place get <strong>8%</strong> of dividend pool</p>
+      <p>20th-30th place get <strong>7%</strong> of dividend pool</p>
+      <p>30th-40th place get <strong>5%</strong> of dividend pool</p>
+      
+      <h3>Game Selection Rules</h3>
+      <p>The last digit of the block hash determines which room to eliminate</p>
+      <p>If <strong>0 or 9</strong> appears, it's a tie, triggering an easter egg where each player receives <strong>1 diamond</strong> airdrop. Diamonds will later become whitelist shares for the second phase chain game.</p>
+      
+      <h3>External Links</h3>
+        <p><a href="https://bkbtc.btcfirwa.fun/" target="_blank"><strong>BKBTC Game Center</strong></a></p>
+        <p><strong>Finance Platform:</strong> Not yet available</p>
+        <p><strong>Telegram Group:</strong> Not yet available</p>
+        <p><strong>Twitter:</strong> Not yet available</p>
+    `
+  },
+
   {
     id: "core-mission-value",
     title: "Core Mission and Values",
@@ -308,13 +215,8 @@ const contentEn = [
     content: `
       <h2>Our Positioning</h2>
       <p>BKBTC positions itself as the world's first Bitcoin reserve bank preparing for NASDAQ listing, combining traditional financial structures with cutting-edge cryptocurrency technology.</p>
-    `
-  },
-  {
-    id: "coin-stock-value-proposition",
-    title: "Coin-Stock Synergy Value Proposition",
-    content: `
-      <h2>"Coin-Stock Synergy" Value Proposition</h2>
+      
+      <h3>"Coin-Stock Synergy" Value Proposition</h3>
       <p>Our unique value proposition lies in the seamless integration of cryptocurrency tokens and traditional stock instruments, creating a hybrid investment vehicle that maximizes value for all participants.</p>
     `
   },
@@ -332,37 +234,17 @@ const contentEn = [
     content: `
       <h2>Ecosystem Planning</h2>
       <p>Our comprehensive ecosystem planning encompasses multiple layers of infrastructure, products, and applications designed to create a self-sustaining digital financial environment.</p>
-    `
-  },
-  {
-    id: "infrastructure",
-    title: "Infrastructure Layer",
-    content: `
-      <h2>Infrastructure Layer</h2>
+      
+      <h3>Infrastructure Layer</h3>
       <p>The foundation of our ecosystem built on robust blockchain technology, secure custody solutions, and scalable financial infrastructure.</p>
-    `
-  },
-  {
-    id: "core-products",
-    title: "Core Product Layer",
-    content: `
-      <h2>Core Product Layer</h2>
+      
+      <h3>Core Product Layer</h3>
       <p>Essential financial products including Bitcoin reserves, token mechanisms, and innovative financial instruments that form the backbone of our ecosystem.</p>
-    `
-  },
-  {
-    id: "application-layer",
-    title: "Application Ecosystem Layer",
-    content: `
-      <h2>Application Ecosystem Layer</h2>
+      
+      <h3>Application Ecosystem Layer</h3>
       <p>User-facing applications and services that provide accessible interfaces for interacting with our financial ecosystem, including gaming, DeFi, and traditional finance integration.</p>
-    `
-  },
-  {
-    id: "ecosystem-synergy",
-    title: "Ecosystem Synergy",
-    content: `
-      <h2>Ecosystem Synergy</h2>
+      
+      <h3>Ecosystem Synergy</h3>
       <p>The interconnected nature of our ecosystem components creates powerful synergies that amplify value creation and user benefits across all platforms and services.</p>
     `
   },
@@ -372,40 +254,21 @@ const contentEn = [
     content: `
       <h2>Technology and Innovation</h2>
       <p>Our technological foundation leverages cutting-edge blockchain innovations, cryptographic security, and financial engineering to deliver unprecedented capabilities.</p>
-    `
-  },
-  {
-    id: "network-integration",
-    title: "Network Integration",
-    content: `
-      <h2>Network Integration</h2>
+      
+      <h3>Network Integration</h3>
       <p>Seamless integration across multiple blockchain networks and traditional financial systems, enabling cross-platform functionality and interoperability.</p>
-    `
-  },
-  {
-    id: "chain-key-signature",
-    title: "Chain Key Signature",
-    content: `
-      <h2>Chain Key Signature</h2>
+      
+      <h3>Chain Key Signature</h3>
       <p>Advanced cryptographic signature technology that enables secure, decentralized transaction processing and asset management across our ecosystem.</p>
-    `
-  },
-  {
-    id: "chain-fusion-interoperability",
-    title: "Chain Fusion and Interoperability",
-    content: `
-      <h2>Chain Fusion and Interoperability</h2>
+      
+      <h3>Chain Fusion and Interoperability</h3>
       <p>Revolutionary technology that enables seamless interaction between different blockchain networks, creating a unified financial ecosystem.</p>
-    `
-  },
-  {
-    id: "chain-key-bitcoin",
-    title: "Chain Key Bitcoin",
-    content: `
-      <h2>Chain Key Bitcoin</h2>
+      
+      <h3>Chain Key Bitcoin</h3>
       <p>Innovative Bitcoin integration technology that enables native Bitcoin functionality within our multi-chain ecosystem while maintaining security and decentralization.</p>
     `
   }
+
 ];
 
 // Export

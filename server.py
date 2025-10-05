@@ -33,7 +33,7 @@ class UTF8HTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
         return mimetype
 
 if __name__ == "__main__":
-    PORT = 8000
+    PORT = 3000
     
     # 设置MIME类型
     mimetypes.add_type('application/javascript', '.js')

@@ -11,41 +11,14 @@ const whitePaperData = {
       title: "项目介绍",
       level: 1,
       expanded: false,
+      contentId: "introduction",
       children: [
         {
           id: "vision-strategy",
           title: "愿景和战略定位",
           level: 2,
           expanded: false,
-          children: [
-            {
-              id: "who-we-are",
-              title: "我们是谁",
-              level: 3,
-              expanded: false,
-              contentId: "who-we-are",
-              children: [
-                {
-                  id: "saudi-investment-council",
-                  title: "核心使命和价值",
-                  level: 4,
-                  contentId: "core-mission-value"
-                },
-                {
-                  id: "bankbtc-overview",
-                  title: "赋能全球投资者",
-                  level: 4,
-                  contentId: "bankbtc-overview"
-                },
-                {
-                  id: "strategic-positioning",
-                  title: "构建全球非投资生态",
-                  level: 4,
-                  contentId: "global-ecosystem"
-                }
-              ]
-            }
-          ]
+          contentId: "vision-strategy"
         }
       ]
     },
@@ -54,64 +27,14 @@ const whitePaperData = {
       title: "我们的定位",
       level: 1,
       expanded: false,
-      contentId: "our-positioning",
-      children: [
-        {
-          id: "coin-stock-value-proposition",
-          title: "\"币股同行\"的价值主张",
-          level: 2,
-          expanded: false,
-          contentId: "coin-stock-value-proposition"
-        }
-      ]
+      contentId: "our-positioning"
     },
     {
       id: "tokenomics",
       title: "BKBTC 经济学",
       level: 1,
       expanded: false,
-      contentId: "tokenomics",
-      children: [
-        {
-          id: "token-supply-distribution",
-          title: "BKBTC 代币供应分配",
-          level: 2,
-          expanded: false,
-          contentId: "token-supply-distribution"
-        },
-        {
-          id: "burn-mechanism",
-          title: "销毁方式",
-          level: 2,
-          expanded: false,
-          children: [
-            {
-              id: "fee-burn",
-              title: "手续费销毁",
-              level: 3,
-              contentId: "fee-burn"
-            },
-            {
-              id: "game-burn",
-              title: "链游销毁",
-              level: 3,
-              contentId: "game-burn"
-            },
-            {
-              id: "ecosystem-burn",
-              title: "生态销毁",
-              level: 3,
-              contentId: "ecosystem-burn"
-            },
-            {
-              id: "burn-end",
-              title: "销毁结束",
-              level: 3,
-              contentId: "burn-end"
-            }
-          ]
-        }
-      ]
+      contentId: "tokenomics"
     },
     {
       id: "bkbtc-overview",
@@ -125,66 +48,14 @@ const whitePaperData = {
           title: "生态规划图",
           level: 2,
           expanded: false,
-          contentId: "ecosystem-planning",
-          children: [
-            {
-              id: "infrastructure",
-              title: "底层基础设施",
-              level: 3,
-              contentId: "infrastructure"
-            },
-            {
-              id: "core-products",
-              title: "核心产品层",
-              level: 3,
-              contentId: "core-products"
-            },
-            {
-              id: "application-layer",
-              title: "应用生态层",
-              level: 3,
-              contentId: "application-layer"
-            },
-            {
-              id: "ecosystem-synergy",
-              title: "生态协同",
-              level: 3,
-              contentId: "ecosystem-synergy"
-            }
-          ]
+          contentId: "ecosystem-planning"
         },
         {
           id: "tech-innovation",
           title: "技术与创新",
           level: 2,
           expanded: false,
-          contentId: "tech-innovation",
-          children: [
-            {
-              id: "network-integration",
-              title: "网络集成",
-              level: 3,
-              contentId: "network-integration"
-            },
-            {
-              id: "chain-key-signature",
-              title: "链密钥签名",
-              level: 3,
-              contentId: "chain-key-signature"
-            },
-            {
-              id: "chain-fusion-interoperability",
-              title: "链融合与互操作性",
-              level: 3,
-              contentId: "chain-fusion-interoperability"
-            },
-            {
-              id: "chain-key-bitcoin",
-              title: "链密钥比特币",
-              level: 3,
-              contentId: "chain-key-bitcoin"
-            }
-          ]
+          contentId: "tech-innovation"
         }
       ]
     },
@@ -194,190 +65,52 @@ const whitePaperData = {
       title: "孵化模式到上市",
       level: 1,
       expanded: false,
-      contentId: "incubation-to-listing",
-      children: [
-        {
-          id: "strategic-partners",
-          title: "战略合作伙伴",
-          level: 2,
-          expanded: false,
-          contentId: "strategic-partners"
-        },
-        {
-          id: "btc-bank-rules",
-          title: "BTC银行规则",
-          level: 2,
-          expanded: false,
-          children: [
-            {
-              id: "node-total",
-              title: "节点总量",
-              level: 3,
-              expanded: false,
-              contentId: "node-total"
-            },
-            {
-              id: "node-rights",
-              title: "节点权益",
-              level: 3,
-              expanded: false,
-              contentId: "node-rights"
-            }
-          ]
-        },
-        {
-          id: "counter-deposit-level2",
-          title: "柜台存款",
-          level: 2,
-          expanded: false,
-          contentId: "counter-deposit-level2"
-        },
-        {
-          id: "rule-description-level2",
-          title: "规则说明",
-          level: 2,
-          expanded: false,
-          children: [
-            {
-              id: "minting-conditions",
-              title: "铸币条件",
-              level: 3,
-              expanded: false,
-              contentId: "minting-conditions"
-            },
-            {
-              id: "gameplay-instructions",
-              title: "玩法说明",
-              level: 3,
-              expanded: false,
-              contentId: "gameplay-instructions",
-              children: [
-                {
-                  id: "time-periods",
-                  title: "时间段",
-                  level: 4,
-                  expanded: false,
-                  contentId: "time-periods"
-                }
-              ]
-            },
-            {
-              id: "winning-conditions",
-              title: "中奖条件",
-              level: 3,
-              expanded: false,
-              contentId: "winning-conditions"
-            },
-            {
-              id: "team-minting-rewards",
-              title: "团队铸币奖励",
-              level: 3,
-              expanded: false,
-              contentId: "team-minting-rewards"
-            }
-          ]
-        }
-      ]
+      contentId: "incubation-to-listing"
     },
     {
       id: "battle-royale-finance",
       title: "大逃杀和理财池",
       level: 1,
       expanded: false,
-      children: [
-        {
-          id: "introduction-description",
-          title: "简介说明",
-          level: 2,
-          expanded: false,
-          children: [
-            {
-              id: "finance-pool-types",
-              title: "理财池主要分为两个类型：",
-              level: 3,
-              expanded: false,
-              children: [
-                {
-                  id: "type-one",
-                  title: "一类型",
-                  level: 4,
-                  expanded: false,
-                  contentId: "type-one"
-                },
-                {
-                  id: "type-two",
-                  title: "二类型",
-                  level: 4,
-                  expanded: false,
-                  contentId: "type-two"
-                }
-              ]
-            }
-          ]
-        }
-      ]
+      contentId: "battle-royale-finance"
     },
     {
       id: "battle-royale-rules",
       title: "大逃杀游戏规则",
       level: 1,
       expanded: false,
-      children: [
-        {
-          id: "game-time",
-          title: "游戏时间",
-          level: 2,
-          expanded: false,
-          contentId: "game-time"
-        },
-        {
-          id: "game-business-model",
-          title: "游戏内商业模式和分配规则",
-          level: 2,
-          expanded: false,
-          contentId: "game-business-model"
-        },
-        {
-          id: "ranking-rewards",
-          title: "排行榜 奖励机制",
-          level: 2,
-          expanded: false,
-          children: [
-            {
-              id: "weekly-dividend",
-              title: "每周分红一次",
-              level: 3,
-              expanded: false,
-              contentId: "weekly-dividend"
-            }
-          ]
-        },
-        {
-          id: "game-selection-rules",
-          title: "游戏选中规则",
-          level: 2,
-          expanded: false,
-          contentId: "game-selection-rules"
-        }
-      ]
+      contentId: "battle-royale-rules"
     }
   ],
   
   chapters: [
     {
-      id: "who-we-are",
-      title: "我们是谁",
+      id: "introduction",
+      title: "项目介绍",
       content: `
-        <h2>我们是谁？</h2>
-        <p>我们是一个专注于比特币储备和数字金融创新的团队，致力于构建全球领先的数字资产管理平台。</p>
+        <h2>项目介绍</h2>
+        
+        <p><strong>中东数字金融新纪元——全球首支比特币储备银行纳斯达克上市之路</strong></p>
+        <p><strong>币股同行 · 生态闭环 · 跨境金融革命</strong></p>
       `
     },
     {
-      id: "bankbtc-overview",
-      title: "赋能全球投资者",
+      id: "vision-strategy",
+      title: "愿景和战略定位",
       content: `
-        <h2>赋能全球投资者</h2>
-        <p>将公司自身转型为一个以比特币（BTC）为主要储备资产的实体，并通过一系列金融操作让投资者能通过投资其公司股票或债券来间接投资比特币</p>
+        <h2>愿景和战略定位</h2>
+        
+        <h3>我们是谁？</h3>
+        <p><strong>沙特阿拉伯投资总会（迪拜）</strong>是沙特政府主导设立、扎根于阿联迪拜国际金融中心的跨区域战略投资促进平台。我们致力于成为连接沙特"2030愿景"与全球资本的核心枢纽，通过迪拜的地缘与政策优势，为国际企业进入沙特及中东市场提供一站式投资解决方案。</p>
+        
+        <h4>核心使命和价值</h4>
+        <p>推动第三个黄金资产BTC成为全世界证券,GP,LP，资本成为核心价值管理的基金会。</p>
+        
+        <h4>赋能全球投资者</h4>
+        <p>将公司自身转型为一个以比特币（BTC）为主要储备资产的实体，并通过一系列金融操作让投资者能通过投资其公司股票或债券来间接投资比特币。</p>
+        
+        <h4>构建全球非投资生态</h4>
+        <p>研发PayFi平台赋能BTC一键发币，Swap交易，BTC储备战略，跨境支付以及服务商RWA资源整合开启新的全面去中心化新世界。</p>
       `
     },
     {
@@ -386,47 +119,25 @@ const whitePaperData = {
       content: `
         <h2>BKBTC 经济学</h2>
         <p>BKBTC代币的总供应量将发行 <strong>21,000,000</strong> 个代币。</p>
-      `
-    },
-    {
-      id: "token-supply-distribution",
-      title: "BKBTC 代币供应分配",
-      content: `
-        <h2>BKBTC 代币供应分配</h2>
+        
+        <h4>BKBTC 代币供应分配</h4>
         <p>BKBTC所有代币全部通过铸币抽奖方式获取。</p>
-      `
-    },
-    {
-      id: "fee-burn",
-      title: "手续费销毁",
-      content: `
-        <h2>手续费销毁</h2>
+        
+        <h4>销毁方式</h4>
+        <p>BKBTC采用多种销毁机制来维持代币的稀缺性和价值：</p>
+        
+        <h5>手续费销毁</h5>
         <p>参与铸币领取对应奖励的人将在提现时触发手续费销毁，销毁为日提现的7%。</p>
         <p><strong>公式：</strong>销毁量 = 每日提现BTC × 7%</p>
-      `
-    },
-    {
-      id: "game-burn",
-      title: "链游销毁",
-      content: `
-        <h2>链游销毁</h2>
+        
+        <h5>链游销毁</h5>
         <p>链游中心根据不同链游路径收取不同的手续费。</p>
         <p><strong>例：</strong>大逃杀游戏每60秒收取参与玩家5%手续费进行销毁。</p>
-      `
-    },
-    {
-      id: "ecosystem-burn",
-      title: "生态销毁",
-      content: `
-        <h2>生态销毁</h2>
+        
+        <h5>生态销毁</h5>
         <p>充电器和RWA充电宝每次售卖和更换充电宝将收取千分之5的手续费进行销毁。</p>
-      `
-    },
-    {
-      id: "burn-end",
-      title: "销毁结束",
-      content: `
-        <h2>销毁结束</h2>
+        
+        <h5>销毁结束</h5>
         <p>BKBTC代币的总供应量将保持固定为 <strong>2,100,000</strong> 个代币。</p>
       `
     },
@@ -444,6 +155,18 @@ const whitePaperData = {
       content: `
         <h2>生态规划图</h2>
         <p>BKBTC生态系统的全面规划和架构设计。</p>
+        
+        <h3>底层基础设施</h3>
+        <p>比特币托管机制 采用ICP多签公共钱包，比特币生态网络，派生钱包/门阀签名技术，Ordinals,Atomicals</p>
+        
+        <h3>核心产品层</h3>
+        <p>比特储值银行（BKBTC），理财和收益聚合，APY产品矩阵（投资国债+逆回购，Babylon协议，双币质押理财，链游复合型理财），PayFi支付网络，eSIM全球流量和礼品卡VISA化</p>
+        
+        <h3>应用生态层</h3>
+        <p>BKBTC，链游，RWA超级孵化中心，机构服务模块，比特币ETF托管，基金定制化敞口工具AtoPlus，币股联动产品NSDK</p>
+        
+        <h3>生态协同</h3>
+        <p>区块链网络，IOS,安卓，TokenPocket，OKX</p>
       `
     },
     {
@@ -452,89 +175,23 @@ const whitePaperData = {
       content: `
         <h2>技术与创新</h2>
         <p>通过新增扩展了ICP网络的对BTC的二层加强了BTC的流转性</p>
-      `
-    },
-    {
-      id: "network-integration",
-      title: "网络集成",
-      content: `
-        <h2>网络集成</h2>
+        
+        <h3>网络集成</h3>
         <p>通过运行比特币适配器，ICP 节点为罐式智能合约提供对比特币区块链最新状态的实时访问。ICP 上设置的比特币 UTXO 使罐式智能合约能够读取任何 BTC 地址的余额。</p>
-      `
-    },
-    {
-      id: "chain-key-signature",
-      title: "链密钥签名",
-      content: `
-        <h2>链密钥签名</h2>
+        
+        <h3>链密钥签名</h3>
         <p>ICP 节点协作生成门限 ECDSA 签名，使智能合约能够签署 BTC 交易。利用网络集成，这些 BTC 交易将直接写入比特币区块链，无需任何跨链桥。链密钥签名还能派生出 BTC 地址，使 ICP 智能合约能够读取、写入和拥有 BTC</p>
-      `
-    },
-    {
-      id: "chain-fusion-interoperability",
-      title: "链融合与互操作性",
-      content: `
-        <h2>链融合与互操作性</h2>
+        
+        <h3>链融合与互操作性</h3>
         <p>除了比特币适配器之外，ICP 智能合约还可以读写其他区块链，提供无与伦比的 Web3 互联体验。单个智能合约可以通过网络集成、RPC 集成和HTTPS 调用等功能，读取、写入和拥有多个区块链上的资产。</p>
-      `
-    },
-    {
-      id: "chain-key-bitcoin",
-      title: "链密钥比特币",
-      content: `
-        <h2>链密钥比特币</h2>
+        
+        <h3>链密钥比特币</h3>
         <p>原生比特币交易需要支付高额手续费，并需要长时间等待区块确认。ckBTC 应运而生，它是比特币的 1:1 孪生兄弟，旨在利用 ICP 生态系统中 1-2 秒的最终确认时间和极低的手续费。ckBTC 是首批 Chain Fusion 应用之一，并为不同用例的多个 dapp 提供支持。</p>
       `
     },
-    {
-      id: "infrastructure",
-      title: "底层基础设施",
-      content: `
-        <h2>底层基础设施</h2>
-        <p>比特币托管机制 采用ICP多签公共钱包，比特币生态网络，派生钱包/门阀签名技术，Ordinals,Atomicals</p>
-      `
-    },
-    {
-      id: "core-products",
-      title: "核心产品层",
-      content: `
-        <h2>核心产品层</h2>
-        <p>比特储值银行（BKBTC），理财和收益聚合，APY产品矩阵（投资国债+逆回购，Babylon协议，双币质押理财，链游复合型理财），PayFi支付网络，eSIM全球流量和礼品卡VISA化</p>
-      `
-    },
-    {
-      id: "application-layer",
-      title: "应用生态层",
-      content: `
-        <h2>应用生态层</h2>
-        <p>BKBTC，链游，RWA超级孵化中心，机构服务模块，比特币ETF托管，基金定制化敞口工具AtoPlus，币股联动产品NSDK</p>
-      `
-    },
-    {
-      id: "ecosystem-synergy",
-      title: "生态协同",
-      content: `
-        <h2>生态协同</h2>
-        <p>区块链网络，IOS,安卓，TokenPocket，OKX</p>
-      `
-    },
 
-    {
-      id: "global-ecosystem",
-      title: "构建全球非投资生态",
-      content: `
-        <h2>构建全球非投资生态</h2>
-        <p>研发PayFi平台赋能BTC一键发币，Swap交易，BTC储备战略，跨境支付以及服务商RWA资源整合开启新的全面去中心化新世界</p>
-      `
-    },
-    {
-      id: "core-mission-value",
-      title: "核心使命和价值",
-      content: `
-        <h2>核心使命和价值</h2>
-        <p>推动第三个黄金资产BTC成为全世界证券,GP,LP，资本成为核心价值管理的基金会</p>
-      `
-    },
+
+
     {
       id: "our-positioning",
       title: "我们的定位",
@@ -543,13 +200,8 @@ const whitePaperData = {
         <p><strong>比特银行（BANKBTC）</strong>是全球首家以比特币储值为核心资产的数字银行，致力于成为中东地区首个在纳斯达克上市的"比特币概念"创新企业。我们通过创新的微策略资本运作模式，将传统金融与数字货币深度融合，为华尔街机构、GP/LP基金及全球投资者提供安全、高效的比特币资产配置解决方案。</p>
         
         <p>我们的使命是让比特币成为全球储备资产，通过"币股同行"模型（即公司股价与比特币价值协同增长），推动数字货币纳入主流金融体系，重塑未来财富存储与增值范式。</p>
-      `
-    },
-    {
-      id: "coin-stock-value-proposition",
-      title: "\"币股同行\"的价值主张",
-      content: `
-        <h2>"币股同行"的价值主张</h2>
+        
+        <h3>"币股同行"的价值主张</h3>
         <p>投资者若看好比特币的长期价值但不想直接持有，购买MSTR股票就相当于投资了一个带有杠杆的比特币投资工具。因为公司通过融资放大了购币能力，其股价的涨跌幅通常会大于比特币本身的涨跌幅。</p>
       `
     },
@@ -606,151 +258,19 @@ const whitePaperData = {
             </tr>
           </tbody>
         </table>
-      `
-    },
 
-    {
-    id: "type-one",
-    title: "一类型",
-    content: `
-      <h2>一类型</h2>
-      
-      <p>RWA判定性理财-开始比特生态的新赛道</p>
-      
-      <p>质押BKBTC得BTC，获得年化利率<strong>10%-160%</strong></p>
-      
-      <p>投资本金使用BKBTC</p>
-      
-      <p>开奖日期为<strong>3天</strong></p>
-      
-      <p>选择BTC的涨与跌</p>
-      
-      <p>年华率为<strong>160%</strong>和<strong>10%</strong></p>
-      
-      <p>当前选择价格和兑换价格比对正确项，获得<strong>160%</strong>的日化的BTC</p>
-      
-      <p>当前选择价格和兑换价格比对错误项，获得<strong>10%</strong>的日化的BTC</p>
-      
-      <p>单次账户最多入金价值<strong>1个BTC</strong>的BKBTC</p>
-    `
-  },
-    {
-    id: "type-two",
-    title: "二类型",
-    content: `
-      <h2>二类型 - 链游理财型</h2>
-      
-      <h3>让BKBTC更伟大</h3>
-      <p>非主动性投资</p>
-      
-      <p>当大逃杀参与者每场次触发中奖，将获得碎片，碎片集满<strong>0.01数量价值的BTC</strong>，自动触发反哺BTC理财</p>
-      
-      <p>BTC理财产品为被动型触发</p>
-      
-      <p>当BKBTC收取数量达到<strong>价值1个BTC</strong>时，按照加权分红获得价值1个BTC的BKBTC的<strong>10%总量</strong>释放给质押者们</p>
-      
-      <p>当释放者获取数量达到<strong>价值0.01BTC</strong>时，出局加速BKBTC的生态发展</p>
-    `
-  },
-    {
-      id: "game-time",
-      title: "游戏时间",
-      content: `
-        <h2>游戏时间</h2>
-        
-        <p>每天早上<strong>9点 - 凌晨2点</strong></p>
-        
-        <p>游戏间隔时间为<strong>60s</strong></p>
-        
-        <p>舱室选择为<strong>8个风格的房间</strong>，玩家可自由选择加入其中一个，并决定投入多少BKBTC参与这场较量</p>
-        
-        <p>倒计时结束后，神秘杀手将随机选择这样一个房间，无情的沙雕该房间内的所有BKBTC，被选中的房间玩家为输家，而其余<strong>7个房间</strong>则成功逃脱，成为赢家</p>
-      `
-    },
-    {
-      id: "game-business-model",
-      title: "游戏内商业模式和分配规则",
-      content: `
-        <h2>游戏内商业模式和分配规则</h2>
-        
-        <p>手续费 <strong>5%</strong> - 平台收取</p>
-        
-        <p>赢家上级分红<strong>3%</strong></p>
-        
-        <p>排行榜收益池<strong>2%</strong></p>
-        
-        <p>赢家加权分红 - <strong>80%</strong></p>
-        
-        <p>链游理财型分红<strong>10%</strong></p>
-      `
-    },
-    {
-      id: "weekly-dividend",
-      title: "每周分红一次",
-      content: `
-        <h2>每周分红一次</h2>
-        
-        <p>参与数量排序前<strong>50名</strong></p>
-        
-        <p>第一名获得分红池 <strong>50%</strong></p>
-        
-        <p>第二名获得分红池 <strong>20%</strong></p>
-        
-        <p>3-10名获得分红池 <strong>10%</strong></p>
-        
-        <p>10-20名获得分红池 <strong>8%</strong></p>
-        
-        <p>20-30名获得分红池 <strong>7%</strong></p>
-        
-        <p>30-40名获得分红池 <strong>5%</strong></p>
-      `
-    },
-    {
-      id: "game-selection-rules",
-      title: "游戏选中规则",
-      content: `
-        <h2>游戏选中规则</h2>
-        
-        <p>当块哈希的最后一位数字是几，选择杀死哪个房间</p>
-        
-        <p>如出现<strong>0和9</strong>，平局，触发彩蛋，每人获得<strong>1个钻石</strong>空投。钻石后期将成为二期链游的白名单份额。</p>
-        
-        <p><strong>外部链接</strong></p>
-        <p><a href="https://bkbtc.btcfirwa.fun/" target="_blank">BKBTC链游中心</a></p>
-        <p><a href="#" onclick="alert('暂未更新'); return false;">理财电报群</a></p>
-        <p><a href="#" onclick="alert('暂未更新'); return false;">推特</a></p>
-      `
-    },
-    {
-      id: "strategic-partners",
-      title: "战略合作伙伴",
-      content: `
-        <h2>战略合作伙伴</h2>
+        <h3>战略合作伙伴</h3>
         <p>比特大陆，币安，欧意，跟比特相关的钱包或者机构</p>
-      `
-    },
 
-    {
-      id: "node-total",
-      title: "节点总量",
-      content: `
-        <h2>节点总量</h2>
+        <h3>BTC银行规则</h3>
+        
+        <h4>节点总量</h4>
         <p>105个节点，每个节点10000枚1050个轻节点，每个节点1000枚上线解锁10%，10天后日1%金本位BKBTC发放</p>
-      `
-    },
-    {
-      id: "node-rights",
-      title: "节点权益",
-      content: `
-        <h2>节点权益</h2>
+        
+        <h4>节点权益</h4>
         <p>所有收益提现10%手续费，节点收益3%，7%BKBTC销毁</p>
-      `
-    },
-    {
-      id: "counter-deposit-level2",
-      title: "柜台存款",
-      content: `
-        <h2>柜台存款</h2>
+
+        <h3>柜台存款</h3>
         <p><strong>存取规则：</strong></p>
         <p>• 0.001的BTC倍数</p>
         <p>• 存1取3</p>
@@ -759,45 +279,22 @@ const whitePaperData = {
         <p><strong>循环复存推荐奖励：</strong></p>
         <p>• 柜台存款奖励1代：10%</p>
         <p>• 柜台存款奖励2代：5%</p>
-      `
-    },
-    {
-      id: "minting-conditions",
-      title: "铸币条件",
-      content: `
-        <h2>铸币条件</h2>
+
+        <h3>规则说明</h3>
+        
+        <h4>铸币条件</h4>
         <p>每份0.001BTC和价值5%BTC的BKBTC</p>
-      `
-    },
-    {
-      id: "gameplay-instructions",
-      title: "玩法说明",
-      content: `
-        <h2>玩法说明</h2>
+        
+        <h4>玩法说明</h4>
         <p>每日场次为2场</p>
-      `
-    },
-    {
-      id: "time-periods",
-      title: "时间段",
-      content: `
-        <h2>时间段</h2>
+        
+        <h5>时间段</h5>
         <p>第一场：每日12：00 - 17：00第二场：每日18：00 - 23:   00</p>
-      `
-    },
-    {
-      id: "winning-conditions",
-      title: "中奖条件",
-      content: `
-        <h2>中奖条件</h2>
+        
+        <h4>中奖条件</h4>
         <p>结束时间停止参与，奖池随机打散，21个参与人为1组，抽出奖励中奖人：获得月化150%的BKBTC奖励未中奖人：参与金额原路退回，消耗10%手续费BKBTC，获得2%BTC的奖励。日化4%</p>
-      `
-    },
-    {
-      id: "team-minting-rewards",
-      title: "团队铸币奖励",
-      content: `
-        <h2>团队铸币奖励</h2>
+        
+        <h4>团队铸币奖励</h4>
         <p>推荐1/人个拿2代，最高奖励20代</p>
         <p><strong>铸币流水奖励比例：</strong></p>
         <p>• 1代：20%</p>
@@ -806,6 +303,61 @@ const whitePaperData = {
         <p>• 11～20代：3%</p>
         <p><strong>举例：</strong></p>
         <p>你团队铸币流水达105万U的BTC，有5万U获得铸币，100万U未获得铸币，铸造1次2%就是2万U，20代铸币流水，2万U÷20＝1000U，1天2次就是2000U价值的BTC，月化就是6万U的BTC收益</p>
+      `
+    },
+    {
+      id: "battle-royale-finance",
+      title: "大逃杀和理财池",
+      content: `
+        <h2>大逃杀和理财池</h2>
+        
+        <h2>理财池主要分为两个类型：</h2>
+        
+        <h3>一类型</h3>
+      <p>RWA判定性理财-开始比特生态的新赛道质押BKBTC得BTC，获得年化利率10%-160%投资本金使用BKBTC开奖日期为3天选择BTC的涨与跌年华率为 160% 和 10%当前选择价格和兑换价格比对正确项，获得160%的日化的BTC当前选择价格和兑换价格比对错误项，获得10%的日化的BTC单次账户最多入金价值1个BTC的BKBTC</p>
+        
+        <h3>二类型</h3>
+        <p>链游理财型 - 让BKBTC更伟大非主动性投资当大逃杀参与者每场次触发中奖，将获得碎片，碎片集满0.01数量价值的BTC，自动触发反哺BTC理财BTC理财产品为被动型触发  当BKBTC 收取数量达到价值1个BTC时，按照加权分红获得价值1个BTC的BKBTC的10%总量释放给质押者们，当释放者获取数量达到价值0.01BTC时，出局加速BKBTC的生态发展</p>
+      `
+    },
+    {
+      id: "battle-royale-rules",
+      title: "大逃杀游戏规则",
+      content: `
+        <h2>大逃杀游戏规则</h2>
+        
+        <h3>游戏时间</h3>
+        <p>每天早上<strong>9点 - 凌晨2点</strong></p>
+        <p>游戏间隔时间为<strong>60s</strong></p>
+        <p>舱室选择为<strong>8个风格的房间</strong>，玩家可自由选择加入其中一个，并决定投入多少BKBTC参与这场较量</p>
+        <p>倒计时结束后，神秘杀手将随机选择这样一个房间，无情的沙雕该房间内的所有BKBTC，被选中的房间玩家为输家，而其余<strong>7个房间</strong>则成功逃脱，成为赢家</p>
+        
+        <h3>游戏内商业模式和分配规则</h3>
+        <p>手续费 <strong>5%</strong> - 平台收取</p>
+        <p>赢家上级分红<strong>3%</strong></p>
+        <p>排行榜收益池<strong>2%</strong></p>
+        <p>赢家加权分红 - <strong>80%</strong></p>
+        <p>链游理财型分红<strong>10%</strong></p>
+        
+        <h3>排行榜奖励机制</h3>
+        <h4>每周分红一次</h4>
+        <p>参与数量排序前<strong>50名</strong></p>
+        <p>第一名获得分红池 <strong>50%</strong></p>
+        <p>第二名获得分红池 <strong>20%</strong></p>
+        <p>3-10名获得分红池 <strong>10%</strong></p>
+        <p>10-20名获得分红池 <strong>8%</strong></p>
+        <p>20-30名获得分红池 <strong>7%</strong></p>
+        <p>30-40名获得分红池 <strong>5%</strong></p>
+        
+        <h3>游戏选中规则</h3>
+        <p>当块哈希的最后一位数字是几，选择杀死哪个房间</p>
+        <p>如出现<strong>0和9</strong>，平局，触发彩蛋，每人获得<strong>1个钻石</strong>空投。钻石后期将成为二期链游的白名单份额。</p>
+        
+        <h3>外部链接</h3>
+        <p><a href="https://bkbtc.btcfirwa.fun/" target="_blank"><strong>BKBTC链游中心</strong></a></p>
+        <p><strong>理财平台：</strong>暂未开放</p>
+        <p><strong>电报群：</strong>暂未开放</p>
+        <p><strong>推特：</strong>暂未开放</p>
       `
     }
   ]
