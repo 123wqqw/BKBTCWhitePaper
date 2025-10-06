@@ -118,7 +118,7 @@ const whitePaperData = {
       title: "BKBTC 经济学",
       content: `
         <h2>BKBTC 经济学</h2>
-        <p>BKBTC代币的总供应量将发行 <strong>21,000,000</strong> 个代币。</p>
+          <p>BKBTC代币的总供应量将发行 <strong>21,000,000</strong> 个代币。</p>
         
         <h4>BKBTC 代币供应分配</h4>
         <p>BKBTC所有代币全部通过铸币抽奖方式获取。</p>
@@ -138,7 +138,7 @@ const whitePaperData = {
         <p>充电器和RWA充电宝每次售卖和更换充电宝将收取千分之5的手续费进行销毁。</p>
         
         <h5>销毁结束</h5>
-        <p>BKBTC代币的总供应量将保持固定为 <strong>2,100,000</strong> 个代币。</p>
+        <p>BKBTC代币的总供应量将保持固定为 <strong>210,000</strong> 个代币。</p>
       `
     },
     {
