@@ -20,20 +20,23 @@ const contentEn = [
       <p>All BKBTC tokens are obtained through minting lottery.</p>
       
       <h4>Burn Mechanisms</h4>
+      <p>BKBTC adopts multiple burn mechanisms to maintain token scarcity and value:</p>
       
       <h5>Fee Burn</h5>
       <p>Participants who mint and receive corresponding rewards will trigger fee burn when withdrawing, with burn rate of 7% of daily withdrawals.</p>
       <p><strong>Formula:</strong> Burn Amount = Daily BTC Withdrawal × 7%</p>
+      
+      <p>5% of successful minting per round + 20×0.5% of unsuccessful minting = 15%</p>
       
       <h5>Game Burn</h5>
       <p>The gaming center charges different fees based on different gaming paths.</p>
       <p><strong>Example:</strong> Battle Royale game charges 5% fee from participating players every 60 seconds for burning.</p>
       
       <h5>Ecosystem Burn</h5>
-      <p>Ecosystem burn mechanism to maintain token value and scarcity.</p>
+      <p>Chargers and RWA power banks charge 0.5% fee for each sale and replacement for burning.</p>
       
       <h5>Burn End</h5>
-      <p>The burn mechanism will end when specific conditions are met.</p>
+      <p>The total supply of BKBTC tokens will remain fixed at <strong>210,000</strong> tokens.</p>
     `
   },
   {
