@@ -550,6 +550,8 @@ class WhitePaperApp {
 
 // 创建应用实例
 const app = new WhitePaperApp();
+// 设置为全局变量，供i18n-manager调用
+window.app = app;
 
 // 确保DOM加载完成后再初始化应用
 if (document.readyState === 'loading') {

@@ -1,8 +1,36 @@
 // English content data
 const contentEn = [
-
   {
-    id: "bankbtc-overview",
+    id: "introduction",
+    title: "Project Introduction",
+    content: `
+      <h2>Project Introduction</h2>
+      
+      <p><strong>A New Era of Middle Eastern Digital Finance — The World's First Bitcoin Reserve Bank's Path to NASDAQ Listing</strong></p>
+      <p><strong>Coin-Stock Synergy · Ecosystem Closed Loop · Cross-Border Financial Revolution</strong></p>
+    `
+  },
+  {
+    id: "vision-strategy",
+    title: "Vision and Strategic Positioning",
+    content: `
+      <h2>Vision and Strategic Positioning</h2>
+      
+      <h3>Who Are We?</h3>
+      <p><strong>Saudi Arabia Investment Authority (Dubai)</strong> is a cross-regional strategic investment promotion platform established under the leadership of the Saudi government and rooted in the Dubai International Financial Centre of the UAE. We are committed to becoming the core hub connecting Saudi Arabia's "Vision 2030" with global capital, providing one-stop investment solutions for international enterprises entering the Saudi and Middle Eastern markets through Dubai's geographical and policy advantages.</p>
+      
+      <h4>Core Mission and Values</h4>
+      <p>Promote the third golden asset BTC to become a global security, GP, LP, and capital as the foundation for core value management.</p>
+      
+      <h4>Empowering Global Investors</h4>
+      <p>Transform the company itself into an entity with Bitcoin (BTC) as its primary reserve asset, and through a series of financial operations, enable investors to indirectly invest in Bitcoin by investing in the company's stocks or bonds.</p>
+      
+      <h4>Building a Global Non-Investment Ecosystem</h4>
+      <p>Develop PayFi platform to empower BTC one-click token issuance, Swap trading, BTC reserve strategy, cross-border payments, and service provider RWA resource integration to open a new comprehensive decentralized world.</p>
+    `
+  },
+  {
+    id: "empowering-global-investors",
     title: "Empowering Global Investors",
     content: `
       <h2>Empowering Global Investors</h2>

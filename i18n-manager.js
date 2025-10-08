@@ -170,15 +170,26 @@ class I18nManager {
         this.loadLanguageData();
         this.updateUI();
         
-        // 重新生成目录
-        if (window.generateTOC) {
-            window.generateTOC();
+        // 强制清空并重新生成目录
+        const tocList = document.getElementById('tocList');
+        if (tocList) {
+            tocList.innerHTML = '';
+        }
+        
+        if (window.app) {
+            // 重新生成目录
+            window.app.generateTableOfContents();
         }
         
         // 如果当前显示的是章节内容，重新加载
-        const currentChapterId = document.querySelector('.chapter-content.active')?.getAttribute('data-chapter-id');
-        if (currentChapterId && window.showChapter) {
-            window.showChapter(currentChapterId);
+        const chapterContent = document.getElementById('chapter-content');
+        if (chapterContent && chapterContent.classList.contains('active') && window.app && window.app.currentChapter) {
+            // 清空当前内容，强制重新渲染
+            chapterContent.innerHTML = '';
+            // 强制重新渲染当前章节内容
+            setTimeout(() => {
+                window.app.showChapter(window.app.currentChapter);
+            }, 50);
         }
     }
 
