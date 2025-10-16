@@ -99,6 +99,7 @@ const whitePaperData = {
       title: "愿景和战略定位",
       content: `
         <h2>愿景和战略定位</h2>
+        <img src="zh/图片1.png" alt="愿景与战略总览图" style="max-width:100%;height:auto;margin:12px 0;border:1px solid #e5e7eb;border-radius:6px;" />
         
         <h3>我们是谁？</h3>
         <p><strong>沙特阿拉伯投资总会（迪拜）</strong>是沙特政府主导设立、扎根于阿联迪拜国际金融中心的跨区域战略投资促进平台。我们致力于成为连接沙特"2030愿景"与全球资本的核心枢纽，通过迪拜的地缘与政策优势，为国际企业进入沙特及中东市场提供一站式投资解决方案。</p>
@@ -118,6 +119,7 @@ const whitePaperData = {
       title: "BKBTC 经济学",
       content: `
         <h2>BKBTC 经济学</h2>
+        <img src="zh/图片2.png" alt="BKBTC 经济学示意图" style="max-width:100%;height:auto;margin:12px 0;border:1px solid #e5e7eb;border-radius:6px;" />
           <p>BKBTC代币的总供应量将发行 <strong>21,000,000</strong> 个代币。</p>
         
         <h4>BKBTC 代币供应分配</h4>
@@ -156,6 +158,7 @@ const whitePaperData = {
       title: "生态规划图",
       content: `
         <h2>生态规划图</h2>
+        <img src="zh/图片1.png" alt="生态规划总览图" style="max-width:100%;height:auto;margin:12px 0;border:1px solid #e5e7eb;border-radius:6px;" />
         <p>BKBTC生态系统的全面规划和架构设计。</p>
         
         <h3>底层基础设施</h3>
@@ -177,6 +180,7 @@ const whitePaperData = {
       content: `
         <h2>技术与创新</h2>
         <p>通过新增扩展了ICP网络的对BTC的二层加强了BTC的流转性</p>
+        <img src="zh/图片5.png" alt="技术架构补充图" style="max-width:100%;height:auto;margin:12px 0;border:1px solid #e5e7eb;border-radius:6px;" />
         
         <h3>网络集成</h3>
         <p>通过运行比特币适配器，ICP 节点为罐式智能合约提供对比特币区块链最新状态的实时访问。ICP 上设置的比特币 UTXO 使罐式智能合约能够读取任何 BTC 地址的余额。</p>
@@ -205,6 +209,7 @@ const whitePaperData = {
         
         <h3>"币股同行"的价值主张</h3>
         <p>投资者若看好比特币的长期价值但不想直接持有，购买MSTR股票就相当于投资了一个带有杠杆的比特币投资工具。因为公司通过融资放大了购币能力，其股价的涨跌幅通常会大于比特币本身的涨跌幅。</p>
+        <img src="zh/图片3.png" alt="币股同行模型示意图" style="max-width:100%;height:auto;margin:12px 0;border:1px solid #e5e7eb;border-radius:6px;" />
       `
     },
     {
@@ -212,6 +217,7 @@ const whitePaperData = {
       title: "孵化模式到上市",
       content: `
         <h2>孵化模式到上市</h2>
+        <img src="zh/图片6.png" alt="孵化到上市路线图" style="max-width:100%;height:auto;margin:12px 0;border:1px solid #e5e7eb;border-radius:6px;" />
         <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
           <thead>
             <tr style="background-color: #f5f5f5;">
@@ -320,7 +326,7 @@ const whitePaperData = {
         
         <h3>二类型</h3>
         <p>链游理财型 - 让BKBTC更伟大非主动性投资当大逃杀参与者每场次触发中奖，将获得碎片，碎片集满0.01数量价值的BTC，自动触发反哺BTC理财BTC理财产品为被动型触发  当BKBTC 收取数量达到价值1个BTC时，按照加权分红获得价值1个BTC的BKBTC的10%总量释放给质押者们，当释放者获取数量达到价值0.01BTC时，出局加速BKBTC的生态发展</p>
-      `
+        `
     },
     {
       id: "battle-royale-rules",
@@ -332,7 +338,7 @@ const whitePaperData = {
         <p>每天早上<strong>9点 - 凌晨2点</strong></p>
         <p>游戏间隔时间为<strong>60s</strong></p>
         <p>舱室选择为<strong>8个风格的房间</strong>，玩家可自由选择加入其中一个，并决定投入多少BKBTC参与这场较量</p>
-        <p>倒计时结束后，神秘杀手将随机选择这样一个房间，无情的沙雕该房间内的所有BKBTC，被选中的房间玩家为输家，而其余<strong>7个房间</strong>则成功逃脱，成为赢家</p>
+        <p>倒计时结束后，神秘杀手将随机选择这样一个房间，无情的杀掉该房间内的所有BKBTC，被选中的房间玩家为输家，而其余<strong>7个房间</strong>则成功逃脱，成为赢家</p>
         
         <h3>游戏内商业模式和分配规则</h3>
         <p>手续费 <strong>5%</strong> - 平台收取</p>
@@ -343,7 +349,7 @@ const whitePaperData = {
         
         <h3>排行榜奖励机制</h3>
         <h4>每周分红一次</h4>
-        <p>参与数量排序前<strong>50名</strong></p>
+        <p>参与数量排序前<strong>40名</strong></p>
         <p>第一名获得分红池 <strong>50%</strong></p>
         <p>第二名获得分红池 <strong>20%</strong></p>
         <p>3-10名获得分红池 <strong>10%</strong></p>
@@ -353,7 +359,7 @@ const whitePaperData = {
         
         <h3>游戏选中规则</h3>
         <p>当块哈希的最后一位数字是几，选择杀死哪个房间</p>
-        <p>如出现<strong>0和9</strong>，平局，触发彩蛋，每人获得<strong>1个钻石</strong>空投。钻石后期将成为二期链游的白名单份额。</p>
+        <p>如出现<strong>0和9</strong>，平局，每人收取<strong>1%</strong>手续费，并奖励<strong>1枚钻石</strong>。钻石后期将成为二期链游的白名单份额。</p>
         
         <h3>外部链接</h3>
         <p><a href="https://bkbtc.btcfirwa.fun/" target="_blank"><strong>BKBTC链游中心</strong></a></p>

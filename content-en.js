@@ -15,6 +15,7 @@ const contentEn = [
     title: "Vision and Strategic Positioning",
     content: `
       <h2>Vision and Strategic Positioning</h2>
+      <img src="en/图片7.png" alt="Vision and Strategy Overview" style="max-width:100%;height:auto;margin:12px 0;border:1px solid #e5e7eb;border-radius:6px;" />
       
       <h3>Who Are We?</h3>
       <p><strong>Saudi Arabia Investment Authority (Dubai)</strong> is a cross-regional strategic investment promotion platform established under the leadership of the Saudi government and rooted in the Dubai International Financial Centre of the UAE. We are committed to becoming the core hub connecting Saudi Arabia's "Vision 2030" with global capital, providing one-stop investment solutions for international enterprises entering the Saudi and Middle Eastern markets through Dubai's geographical and policy advantages.</p>
@@ -42,6 +43,7 @@ const contentEn = [
     title: "BKBTC Economics",
     content: `
       <h2>BKBTC Economics</h2>
+      <img src="en/图片8.png" alt="BKBTC Tokenomics Overview" style="max-width:100%;height:auto;margin:12px 0;border:1px solid #e5e7eb;border-radius:6px;" />
       <p>The total supply of BKBTC tokens will issue <strong>21,000,000</strong> tokens.</p>
       
       <h4>BKBTC Token Supply Distribution</h4>
@@ -72,6 +74,7 @@ const contentEn = [
     title: "Incubation to Listing",
     content: `
       <h2>Incubation to Listing</h2>
+      <img src="en/图片12.png" alt="Incubation to Listing Roadmap" style="max-width:100%;height:auto;margin:12px 0;border:1px solid #e5e7eb;border-radius:6px;" />
       <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
         <thead>
           <tr style="background-color: #f5f5f5;">
@@ -204,7 +207,7 @@ const contentEn = [
       
       <h3>Leaderboard Reward Mechanism</h3>
       <h4>Weekly Dividends</h4>
-      <p>Top <strong>50</strong> participants by volume</p>
+      <p>Top <strong>40</strong> participants by volume</p>
       <p>1st place gets <strong>50%</strong> of dividend pool</p>
       <p>2nd place gets <strong>20%</strong> of dividend pool</p>
       <p>3rd-10th place get <strong>10%</strong> of dividend pool</p>
@@ -214,7 +217,7 @@ const contentEn = [
       
       <h3>Game Selection Rules</h3>
       <p>The last digit of the block hash determines which room to eliminate</p>
-      <p>If <strong>0 or 9</strong> appears, it's a tie, triggering an easter egg where each player receives <strong>1 diamond</strong> airdrop. Diamonds will later become whitelist shares for the second phase chain game.</p>
+      <p>If <strong>0 or 9</strong> appears, it's a tie. Each player is charged a <strong>1%</strong> fee and rewarded with <strong>1 diamond</strong>. Diamonds will later become whitelist shares for the second phase chain game.</p>
       
       <h3>External Links</h3>
         <p><a href="https://bkbtc.btcfirwa.fun/" target="_blank"><strong>BKBTC Game Center</strong></a></p>
@@ -249,6 +252,7 @@ const contentEn = [
       
       <h3>"Coin-Stock Synergy" Value Proposition</h3>
       <p>Our unique value proposition lies in the seamless integration of cryptocurrency tokens and traditional stock instruments, creating a hybrid investment vehicle that maximizes value for all participants.</p>
+      <img src="en/图片9.png" alt="Coin-Stock Synergy Model" style="max-width:100%;height:auto;margin:12px 0;border:1px solid #e5e7eb;border-radius:6px;" />
     `
   },
   {
@@ -264,6 +268,7 @@ const contentEn = [
     title: "Ecosystem Planning",
     content: `
       <h2>Ecosystem Planning</h2>
+      <img src="en/图片7.png" alt="Ecosystem Overview Diagram" style="max-width:100%;height:auto;margin:12px 0;border:1px solid #e5e7eb;border-radius:6px;" />
       <p>Our comprehensive ecosystem planning encompasses multiple layers of infrastructure, products, and applications designed to create a self-sustaining digital financial environment.</p>
       
       <h3>Infrastructure Layer</h3>
@@ -285,6 +290,7 @@ const contentEn = [
     content: `
       <h2>Technology and Innovation</h2>
       <p>Our technological foundation leverages cutting-edge blockchain innovations, cryptographic security, and financial engineering to deliver unprecedented capabilities.</p>
+      <img src="en/图片11.png" alt="Technology and Innovation Diagram" style="max-width:100%;height:auto;margin:12px 0;border:1px solid #e5e7eb;border-radius:6px;" />
       
       <h3>Network Integration</h3>
       <p>Seamless integration across multiple blockchain networks and traditional financial systems, enabling cross-platform functionality and interoperability.</p>
