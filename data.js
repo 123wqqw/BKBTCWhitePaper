@@ -341,7 +341,7 @@ const whitePaperData = {
         <p>倒计时结束后，神秘杀手将随机选择这样一个房间，无情的杀掉该房间内的所有BKBTC，被选中的房间玩家为输家，而其余<strong>7个房间</strong>则成功逃脱，成为赢家</p>
         
         <h3>游戏内商业模式和分配规则</h3>
-        <p>手续费 <strong>5%</strong> - 平台收取</p>
+        <p>手续费 <strong>25%</strong> - 平台收取</p>
         <p>赢家上级分红<strong>3%</strong></p>
         <p>排行榜收益池<strong>2%</strong></p>
         <p>赢家加权分红 - <strong>80%</strong></p>

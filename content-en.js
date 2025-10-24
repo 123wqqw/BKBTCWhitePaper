@@ -199,7 +199,7 @@ const contentEn = [
       <p>After countdown ends, the mysterious killer will randomly select one room, ruthlessly eliminating all BKBTC in that room. Players in the selected room are losers, while the other <strong>7 rooms</strong> successfully escape and become winners</p>
       
       <h3>In-Game Business Model and Distribution Rules</h3>
-      <p>Transaction fee <strong>5%</strong> - Platform collection</p>
+      <p>Transaction fee <strong>25%</strong> - Platform collection</p>
       <p>Winner upline dividend <strong>3%</strong></p>
       <p>Leaderboard revenue pool <strong>2%</strong></p>
       <p>Winner weighted dividend - <strong>80%</strong></p>
